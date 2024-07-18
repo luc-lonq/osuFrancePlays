@@ -10,12 +10,17 @@ Route::get('/', function () {
 
 Route::get('/regions', function () {
     $regions = Region::all();
-    return view('regions', ['regions' => $regions]);
+    $players = [];
+    return view('regions',
+        [
+            'regions' => $regions,
+            'players' => $players
+        ]);
 });
 
 Route::get('/regions/{id}', function ($id) {
     $regions = Region::all();
-    $players = Player::findByRegion($id);
+    $players = Player::where('region_id', $id)->get();
     return view('regions',
         [
             'regions' => $regions,
