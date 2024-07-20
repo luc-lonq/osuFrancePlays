@@ -1,33 +1,19 @@
 <?php
 
-use App\Models\Player;
-use App\Models\Region;
+use App\Http\Controllers\OsuApiController;
+use App\Http\Controllers\RegionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/regions', function () {
-    $regions = Region::all();
-    $players = [];
-    return view('regions',
-        [
-            'regions' => $regions,
-            'players' => $players
-        ]);
-});
+Route::get('/regions', [RegionController::class, 'index']);
 
-Route::get('/regions/{id}', function ($id) {
-    $regions = Region::all();
-    $players = Player::where('region_id', $id)->get();
-    return view('regions',
-        [
-            'regions' => $regions,
-            'players' => $players
-        ]);
-});
+Route::get('/regions/{id}', [RegionController::class, 'show']);
 
 Route::get('/sotw', function () {
     return view('sotw');
 });
+
+Route::get('/players', [OsuApiController::class, 'updatePlayersData']);
