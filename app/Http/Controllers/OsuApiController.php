@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Player;
 use GuzzleHttp\Client;
-use Illuminate\Http\Request;
 
 class OsuApiController extends Controller
 {
@@ -54,9 +53,12 @@ class OsuApiController extends Controller
 
     public function updatePlayersData()
     {
-        foreach ($this->getFrenchRanking(1)['ranking'] as $ranking) {
+        $page = 1;
+        foreach ($this->getFrenchRanking($page)['ranking'] as $key => $ranking) {
             $player = Player::query()->where('osu_id', $ranking['user']['id'])->first();
             $player->pp = $ranking['pp'];
+            $player->rank = $ranking['global_rank'];
+            $player->country_rank = ($page - 1) * 50 + $key + 1;
             $player->save();
         }
     }
