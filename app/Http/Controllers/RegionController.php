@@ -24,6 +24,7 @@ class RegionController extends Controller
     {
         $regions = Region::all();
         $players = Player::query()->where('region_id', $id)->get();
+        $players->sortByDesc('pp');
         return view('regions',
             [
                 'regions' => $regions,
