@@ -55,18 +55,19 @@ class OsuApiController extends Controller
 
     public function updatePlayersData()
     {
-        $page = 1;
-        foreach ($this->getFrenchRanking($page)['ranking'] as $key=>$ranking) {
-            $player = Player::query()->where('osu_id', $ranking['user']['id'])->first();
-            $player->pp = $ranking['pp'];
-            $player->rank = $ranking['global_rank'];
-            $player->country_rank = ($page - 1) * 50 + $key + 1;
-            $player->save();
+        for ($page = 1; $page <= env('OSU_RANKING_PAGE'); $page++) {
+            foreach ($this->getFrenchRanking($page)['ranking'] as $key=>$ranking) {
+                $player = Player::query()->where('osu_id', $ranking['user']['id'])->first();
+                $player->pp = $ranking['pp'];
+                $player->rank = $ranking['global_rank'];
+                $player->country_rank = ($page - 1) * 50 + $key + 1;
+                $player->save();
+            }
         }
-        $this->sortPlayersRanking();
+        $this->sortRegionsRanking();
     }
 
-    public function sortPlayersRanking()
+    public function sortRegionsRanking()
     {
         $regions = Region::all();
         foreach ($regions as $region) {
