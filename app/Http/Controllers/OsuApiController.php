@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
+use App\Models\Region;
 use GuzzleHttp\Client;
+use Illuminate\Support\Arr;
 
 class OsuApiController extends Controller
 {
@@ -54,12 +56,28 @@ class OsuApiController extends Controller
     public function updatePlayersData()
     {
         $page = 1;
-        foreach ($this->getFrenchRanking($page)['ranking'] as $key => $ranking) {
+        foreach ($this->getFrenchRanking($page)['ranking'] as $key=>$ranking) {
             $player = Player::query()->where('osu_id', $ranking['user']['id'])->first();
             $player->pp = $ranking['pp'];
             $player->rank = $ranking['global_rank'];
             $player->country_rank = ($page - 1) * 50 + $key + 1;
             $player->save();
+        }
+        $this->sortPlayersRanking();
+    }
+
+    public function sortPlayersRanking()
+    {
+        $regions = Region::all();
+        foreach ($regions as $region) {
+            $playersRegion = Player::query()->where('region_id', $region->id)->get();
+            $playersRegion->sortByDesc('pp');
+            foreach ($playersRegion as $key=>$playerRegion) {
+                $player = Player::query()->find($playerRegion->id);
+                dump($player);
+                $player['region_rank'] = $key + 1;
+                $player->save();
+            }
         }
     }
 }
