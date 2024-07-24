@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('rank');
             $table->integer('country_rank');
             $table->integer('region_rank');
+            $table->json('history')->nullable();
             $table->foreignIdFor(\App\Models\Region::class);
             $table->timestamps();
         });

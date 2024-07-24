@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Player;
 use App\Models\Region;
+use App\Models\Update;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
-use Illuminate\Support\Arr;
 
 class OsuApiController extends Controller
 {
@@ -55,16 +56,30 @@ class OsuApiController extends Controller
 
     public function updatePlayersData()
     {
+        $datetime = Carbon::now();
+        $datetime->subDays(7);
         for ($page = 1; $page <= env('OSU_RANKING_PAGE'); $page++) {
             foreach ($this->getFrenchRanking($page)['ranking'] as $key=>$ranking) {
                 $player = Player::query()->where('osu_id', $ranking['user']['id'])->first();
-                $player->pp = $ranking['pp'];
-                $player->rank = $ranking['global_rank'];
-                $player->country_rank = ($page - 1) * 50 + $key + 1;
-                $player->save();
+                if ($player) {
+                    $history = json_decode($player->history, true);
+                    $history[$datetime->format('Y-m-d')] = [
+                        'pp' => $player->pp,
+                        'rank' => $player->rank,
+                        'country_rank' => $player->country_rank,
+                        'region_rank' => $player->region_rank,
+                        'region_id' => $player->region_id,
+                    ];
+                    $player->history = json_encode($history);
+                    $player->pp = $ranking['pp'];
+                    $player->rank = $ranking['global_rank'];
+                    $player->country_rank = ($page - 1) * 50 + $key + 1;
+                    $player->save();
+                }
             }
         }
         $this->sortRegionsRanking();
+        Update::query()->create(['players_last_update' => $datetime]);
     }
 
     public function sortRegionsRanking()
@@ -75,7 +90,6 @@ class OsuApiController extends Controller
             $playersRegion->sortByDesc('pp');
             foreach ($playersRegion as $key=>$playerRegion) {
                 $player = Player::query()->find($playerRegion->id);
-                dump($player);
                 $player['region_rank'] = $key + 1;
                 $player->save();
             }
