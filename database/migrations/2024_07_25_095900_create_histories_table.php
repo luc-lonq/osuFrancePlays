@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('updates', function (Blueprint $table) {
+        Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->date('players_last_update');
+            $table->date('date');
+            $table->foreignIdFor(\App\Models\Region::class);
+            $table->json('ranking');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('updates');
+        Schema::dropIfExists('histories');
     }
 };

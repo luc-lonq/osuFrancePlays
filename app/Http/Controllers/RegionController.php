@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Player;
 use App\Models\Region;
-use App\Models\Update;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class RegionController extends Controller
@@ -24,19 +23,25 @@ class RegionController extends Controller
     public function show(int $id): View
     {
         $regions = Region::all();
-        $players = Player::query()->where('region_id', $id)->get();
-        $last_update = Update::all()->last();
+        $players = Player::query()->where('region_id', $id)->orderBy('region_rank')->get();
+        $last_history = History::query()->where('region_id', $id)->orderBy('updated_at', 'desc')->first();
         $players->sortByDesc('pp');
         return view('regions',
             [
                 'regions' => $regions,
                 'players' => $players,
-                'lastUpdate' => $last_update
+                'lastHistory' => $last_history
             ]);
     }
 
     public function history(int $id): View
     {
-        return view();
+        $regions = Region::all();
+        $players = Player::query()->where('region_id', $id)->orderBy('region_rank')->get();
+        return view('regions',
+            [
+                'regions' => $regions,
+                'players' => $players,
+            ]);
     }
 }

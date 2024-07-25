@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Update extends Model
+class History extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'players_last_update'
+        'date',
+        'region_id',
+        'ranking'
     ];
 }

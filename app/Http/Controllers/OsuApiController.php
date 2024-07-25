@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Player;
 use App\Models\Region;
-use App\Models\Update;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
@@ -56,21 +56,11 @@ class OsuApiController extends Controller
 
     public function updatePlayersData()
     {
-        $datetime = Carbon::now();
-        $datetime->subDays(7);
+        $this->saveLastRanking();
         for ($page = 1; $page <= env('OSU_RANKING_PAGE'); $page++) {
             foreach ($this->getFrenchRanking($page)['ranking'] as $key=>$ranking) {
                 $player = Player::query()->where('osu_id', $ranking['user']['id'])->first();
                 if ($player) {
-                    $history = json_decode($player->history, true);
-                    $history[$datetime->format('Y-m-d')] = [
-                        'pp' => $player->pp,
-                        'rank' => $player->rank,
-                        'country_rank' => $player->country_rank,
-                        'region_rank' => $player->region_rank,
-                        'region_id' => $player->region_id,
-                    ];
-                    $player->history = json_encode($history);
                     $player->pp = $ranking['pp'];
                     $player->rank = $ranking['global_rank'];
                     $player->country_rank = ($page - 1) * 50 + $key + 1;
@@ -79,20 +69,43 @@ class OsuApiController extends Controller
             }
         }
         $this->sortRegionsRanking();
-        Update::query()->create(['players_last_update' => $datetime]);
     }
 
     public function sortRegionsRanking()
     {
         $regions = Region::all();
         foreach ($regions as $region) {
-            $playersRegion = Player::query()->where('region_id', $region->id)->get();
-            $playersRegion->sortByDesc('pp');
+            $playersRegion = Player::query()->where('region_id', $region->id)->orderByDesc('pp')->get();
             foreach ($playersRegion as $key=>$playerRegion) {
                 $player = Player::query()->find($playerRegion->id);
                 $player['region_rank'] = $key + 1;
                 $player->save();
             }
+        }
+    }
+
+    public function saveLastRanking()
+    {
+        $datetime = Carbon::now();
+        $datetime->subDays(7);
+
+        $regions = Region::all();
+        foreach ($regions as $region) {
+            $playersRegion = Player::query()->where('region_id', $region->id)->orderByDesc('pp')->get();
+            $playersArr = [];
+            foreach ($playersRegion as $key=>$playerRegion) {
+                $player = Player::query()->find($playerRegion->id);
+                $playersArr[$player['osu_id']] = [
+                    'rank' => $player['rank'],
+                    'country_rank' => $player['country_rank'],
+                    'region_rank' => $player['region_rank'],
+                    'pp' => $player['pp'],
+                ];
+            }
+            $history = History::query()->create([
+                'region_id' => $region->id,
+                'date' => $datetime->format('Y-m-d'),
+                'ranking' => json_encode($playersArr)]);
         }
     }
 }

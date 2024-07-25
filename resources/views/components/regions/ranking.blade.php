@@ -72,20 +72,20 @@
                             <th scope="row" class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                  <div class="flex items-center">
                                      {{ $player['region_rank'] }}
-                                     @if (array_key_exists($lastUpdate->players_last_update, json_decode($player->history, true)))
-                                         @if (json_decode($player->history, true)[$lastUpdate->players_last_update]['region_rank'] - $player->region_rank > 0)
+                                     @if(array_key_exists($player->osu_id, json_decode($lastHistory->ranking, true)))
+                                         @if(json_decode($lastHistory->ranking, true)[$player->osu_id]['region_rank'] - $player->region_rank > 0)
                                              <svg class="w-5 h-5 ml-3 text-green-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 15 7-7 7 7"/>
                                              </svg>
                                              <p class="text-green-500">
-                                                {{ json_decode($player->history, true)[$lastUpdate->players_last_update]['region_rank'] - $player->region_rank }}
+                                                {{ json_decode($lastHistory->ranking, true)[$player->osu_id]['region_rank'] - $player->region_rank }}
                                              </p>
-                                         @elseif(json_decode($player->history, true)[$lastUpdate->players_last_update]['region_rank'] - $player->region_rank < 0)
+                                         @elseif(json_decode($lastHistory->ranking, true)[$player->osu_id]['region_rank'] - $player->region_rank < 0)
                                              <svg class="w-5 h-5 ml-3 text-red-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
                                              </svg>
                                              <p class="text-red-500">
-                                                 {{ json_decode($player->history, true)[$lastUpdate->players_last_update]['region_rank'] - $player->region_rank }}
+                                                 {{ json_decode($lastHistory->ranking, true)[$player->osu_id]['region_rank'] - $player->region_rank }}
                                              </p>
                                          @endif
                                      @endif
@@ -97,20 +97,20 @@
                             <td class="px-6 py-3">
                                 <div class="flex items-center">
                                     {{ $player['pp'] }}pp
-                                    @if (array_key_exists($lastUpdate->players_last_update, json_decode($player->history, true)))
-                                        @if ($player->pp - json_decode($player->history, true)[$lastUpdate->players_last_update]['pp'] > 0)
+                                    @if(array_key_exists($player->osu_id, json_decode($lastHistory->ranking, true)))
+                                        @if($player->pp - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] > 0)
                                             <svg class="w-5 h-5 ml-3 text-green-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 15 7-7 7 7"/>
                                             </svg>
                                             <p class="text-green-500">
-                                                {{ $player->pp - json_decode($player->history, true)[$lastUpdate->players_last_update]['pp'] }}
+                                                {{ $player->pp - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] }}
                                             </p>
-                                        @elseif($player->pp - json_decode($player->history, true)[$lastUpdate->players_last_update]['pp'] < 0)
+                                        @elseif($player->pp - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] < 0)
                                             <svg class="w-5 h-5 ml-3 text-red-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
                                             </svg>
                                             <p class="text-red-500">
-                                                {{ $player->pp - json_decode($player->history, true)[$lastUpdate->players_last_update]['pp'] }}
+                                                {{ $player->pp - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] }}
                                             </p>
                                         @endif
                                     @endif
@@ -119,20 +119,20 @@
                             <td class="px-6 py-3">
                                 <div class="flex items-center">
                                     {{ $player['country_rank'] }}
-                                    @if (array_key_exists($lastUpdate->players_last_update, json_decode($player->history, true)))
-                                        @if (json_decode($player->history, true)[$lastUpdate->players_last_update]['country_rank'] - $player->country_rank > 0)
+                                    @if(array_key_exists($player->osu_id, json_decode($lastHistory->ranking, true)))
+                                        @if(json_decode($lastHistory->ranking, true)[$player->osu_id]['country_rank'] - $player->country_rank > 0)
                                             <svg class="w-5 h-5 ml-3 text-green-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 15 7-7 7 7"/>
                                             </svg>
                                             <p class="text-green-500">
-                                                {{ json_decode($player->history, true)[$lastUpdate->players_last_update]['country_rank'] - $player->country_rank }}
+                                                {{ json_decode($lastHistory->ranking, true)[$player->osu_id]['country_rank'] - $player->country_rank }}
                                             </p>
-                                        @elseif(json_decode($player->history, true)[$lastUpdate->players_last_update]['country_rank'] - $player->country_rank < 0)
+                                        @elseif(json_decode($lastHistory->ranking, true)[$player->osu_id]['country_rank'] - $player->country_rank < 0)
                                             <svg class="w-5 h-5 ml-3 text-red-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
                                             </svg>
                                             <p class="text-red-500">
-                                                {{ json_decode($player->history, true)[$lastUpdate->players_last_update]['country_rank'] - $player->country_rank }}
+                                                {{ json_decode($lastHistory->ranking, true)[$player->osu_id]['country_rank'] - $player->country_rank }}
                                             </p>
                                         @endif
                                     @endif
@@ -141,20 +141,20 @@
                             <td class="px-6 py-3">
                                 <div class="flex items-center">
                                     {{ $player['rank'] }}
-                                    @if (array_key_exists($lastUpdate->players_last_update, json_decode($player->history, true)))
-                                        @if (json_decode($player->history, true)[$lastUpdate->players_last_update]['rank'] - $player->rank > 0)
+                                    @if(array_key_exists($player->osu_id, json_decode($lastHistory->ranking, true)))
+                                        @if (json_decode($lastHistory->ranking, true)[$player->osu_id]['rank'] - $player->rank > 0)
                                             <svg class="w-5 h-5 ml-3 text-green-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 15 7-7 7 7"/>
                                             </svg>
                                             <p class="text-green-500">
-                                                {{ json_decode($player->history, true)[$lastUpdate->players_last_update]['rank'] - $player->rank }}
+                                                {{ json_decode($lastHistory->ranking, true)[$player->osu_id]['rank'] - $player->rank }}
                                             </p>
-                                        @elseif(json_decode($player->history, true)[$lastUpdate->players_last_update]['rank'] - $player->rank < 0)
+                                        @elseif(json_decode($lastHistory->ranking, true)[$player->osu_id]['rank'] - $player->rank < 0)
                                             <svg class="w-5 h-5 ml-3 text-red-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
                                             </svg>
                                             <p class="text-red-500">
-                                                {{ json_decode($player->history, true)[$lastUpdate->players_last_update]['rank'] - $player->rank }}
+                                                {{ json_decode($lastHistory->ranking, true)[$player->osu_id]['rank'] - $player->rank }}
                                             </p>
                                         @endif
                                     @endif

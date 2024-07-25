@@ -16,6 +16,6 @@ class Player extends Model
         'rank',
         'country_rank',
         'region_rank',
-        'history'
+        'region_id'
     ];
 }

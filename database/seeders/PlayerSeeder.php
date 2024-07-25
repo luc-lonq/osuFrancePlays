@@ -21,7 +21,6 @@ class PlayerSeeder extends Seeder
             'rank' => 101,
             'country_rank' => 1,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 10,
         ]);
         Player::factory()->create([
@@ -32,7 +31,6 @@ class PlayerSeeder extends Seeder
             'rank' => 110,
             'country_rank' => 2,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 11,
         ]);
         Player::factory()->create([
@@ -43,7 +41,6 @@ class PlayerSeeder extends Seeder
             'rank' => 157,
             'country_rank' => 3,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 10,
         ]);
         Player::factory()->create([
@@ -54,7 +51,6 @@ class PlayerSeeder extends Seeder
             'rank' => 185,
             'country_rank' => 4,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 13,
         ]);
         Player::factory()->create([
@@ -65,7 +61,6 @@ class PlayerSeeder extends Seeder
             'rank' => 222,
             'country_rank' => 5,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 12,
         ]);
         Player::factory()->create([
@@ -76,7 +71,6 @@ class PlayerSeeder extends Seeder
             'rank' => 288,
             'country_rank' => 6,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 13,
         ]);
         Player::factory()->create([
@@ -87,7 +81,6 @@ class PlayerSeeder extends Seeder
             'rank' => 304,
             'country_rank' => 7,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -98,7 +91,6 @@ class PlayerSeeder extends Seeder
             'rank' => 356,
             'country_rank' => 8,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 11,
         ]);
         Player::factory()->create([
@@ -109,7 +101,6 @@ class PlayerSeeder extends Seeder
             'rank' => 370,
             'country_rank' => 9,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 2,
         ]);
         Player::factory()->create([
@@ -120,7 +111,6 @@ class PlayerSeeder extends Seeder
             'rank' => 423,
             'country_rank' => 10,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 9,
         ]);
         Player::factory()->create([
@@ -131,7 +121,6 @@ class PlayerSeeder extends Seeder
             'rank' => 438,
             'country_rank' => 11,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 11,
         ]);
         Player::factory()->create([
@@ -142,7 +131,6 @@ class PlayerSeeder extends Seeder
             'rank' => 440,
             'country_rank' => 12,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 7,
         ]);
         Player::factory()->create([
@@ -153,7 +141,6 @@ class PlayerSeeder extends Seeder
             'rank' => 443,
             'country_rank' => 13,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 3,
         ]);
         Player::factory()->create([
@@ -164,7 +151,6 @@ class PlayerSeeder extends Seeder
             'rank' => 451,
             'country_rank' => 14,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -175,7 +161,6 @@ class PlayerSeeder extends Seeder
             'rank' => 537,
             'country_rank' => 15,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 3,
         ]);
         Player::factory()->create([
@@ -186,7 +171,6 @@ class PlayerSeeder extends Seeder
             'rank' => 566,
             'country_rank' => 16,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 10,
         ]);
         Player::factory()->create([
@@ -197,7 +181,6 @@ class PlayerSeeder extends Seeder
             'rank' => 575,
             'country_rank' => 17,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 2,
         ]);
         Player::factory()->create([
@@ -208,7 +191,6 @@ class PlayerSeeder extends Seeder
             'rank' => 582,
             'country_rank' => 18,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -219,7 +201,6 @@ class PlayerSeeder extends Seeder
             'rank' => 592,
             'country_rank' => 19,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -230,7 +211,6 @@ class PlayerSeeder extends Seeder
             'rank' => 620,
             'country_rank' => 20,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -241,7 +221,6 @@ class PlayerSeeder extends Seeder
             'rank' => 624,
             'country_rank' => 21,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 6,
         ]);
         Player::factory()->create([
@@ -252,7 +231,6 @@ class PlayerSeeder extends Seeder
             'rank' => 686,
             'country_rank' => 22,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 6,
         ]);
         Player::factory()->create([
@@ -263,7 +241,6 @@ class PlayerSeeder extends Seeder
             'rank' => 726,
             'country_rank' => 23,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 13,
         ]);
         Player::factory()->create([
@@ -274,7 +251,6 @@ class PlayerSeeder extends Seeder
             'rank' => 774,
             'country_rank' => 24,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 6,
         ]);
         Player::factory()->create([
@@ -285,7 +261,6 @@ class PlayerSeeder extends Seeder
             'rank' => 808,
             'country_rank' => 25,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 3,
         ]);
         Player::factory()->create([
@@ -296,7 +271,6 @@ class PlayerSeeder extends Seeder
             'rank' => 809,
             'country_rank' => 26,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 13,
         ]);
         Player::factory()->create([
@@ -307,7 +281,6 @@ class PlayerSeeder extends Seeder
             'rank' => 824,
             'country_rank' => 27,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 11,
         ]);
         Player::factory()->create([
@@ -318,7 +291,6 @@ class PlayerSeeder extends Seeder
             'rank' => 827,
             'country_rank' => 28,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 9,
         ]);
         Player::factory()->create([
@@ -329,7 +301,6 @@ class PlayerSeeder extends Seeder
             'rank' => 870,
             'country_rank' => 29,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 3,
         ]);
         Player::factory()->create([
@@ -340,7 +311,6 @@ class PlayerSeeder extends Seeder
             'rank' => 909,
             'country_rank' => 30,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 2,
         ]);
         Player::factory()->create([
@@ -351,7 +321,6 @@ class PlayerSeeder extends Seeder
             'rank' => 932,
             'country_rank' => 31,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 7,
         ]);
         Player::factory()->create([
@@ -362,7 +331,6 @@ class PlayerSeeder extends Seeder
             'rank' => 960,
             'country_rank' => 32,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 10,
         ]);
         Player::factory()->create([
@@ -373,7 +341,6 @@ class PlayerSeeder extends Seeder
             'rank' => 971,
             'country_rank' => 33,
             'region_rank' => 5,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -384,7 +351,6 @@ class PlayerSeeder extends Seeder
             'rank' => 989,
             'country_rank' => 34,
             'region_rank' => 5,
-            'history' => json_encode([]),
             'region_id' => 11,
         ]);
         Player::factory()->create([
@@ -395,7 +361,6 @@ class PlayerSeeder extends Seeder
             'rank' => 991,
             'country_rank' => 35,
             'region_rank' => 5,
-            'history' => json_encode([]),
             'region_id' => 13,
         ]);
         Player::factory()->create([
@@ -406,7 +371,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1059,
             'country_rank' => 36,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 9,
         ]);
         Player::factory()->create([
@@ -417,7 +381,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1116,
             'country_rank' => 37,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -428,7 +391,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1128,
             'country_rank' => 38,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -439,7 +401,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1139,
             'country_rank' => 39,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 7,
         ]);
         Player::factory()->create([
@@ -450,7 +411,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1220,
             'country_rank' => 40,
             'region_rank' => 6,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -461,7 +421,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1262,
             'country_rank' => 41,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -472,7 +431,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1352,
             'country_rank' => 42,
             'region_rank' => 7,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -483,7 +441,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1415,
             'country_rank' => 43,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 12,
         ]);
         Player::factory()->create([
@@ -494,7 +451,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1447,
             'country_rank' => 44,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 4,
         ]);
         Player::factory()->create([
@@ -505,7 +461,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1467,
             'country_rank' => 45,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 9,
         ]);
         Player::factory()->create([
@@ -516,7 +471,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1503,
             'country_rank' => 46,
             'region_rank' => 8,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -527,7 +481,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1545,
             'country_rank' => 47,
             'region_rank' => 9,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -538,7 +491,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1552,
             'country_rank' => 48,
             'region_rank' => 5,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -549,7 +501,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1553,
             'country_rank' => 49,
             'region_rank' => 5,
-            'history' => json_encode([]),
             'region_id' => 10,
         ]);
         Player::factory()->create([
@@ -560,7 +511,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1560,
             'country_rank' => 50,
             'region_rank' => 1,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
         Player::factory()->create([
@@ -571,7 +521,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1596,
             'country_rank' => 51,
             'region_rank' => 6,
-            'history' => json_encode([]),
             'region_id' => 10,
         ]);
         Player::factory()->create([
@@ -582,7 +531,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1608,
             'country_rank' => 52,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
         Player::factory()->create([
@@ -593,7 +541,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1612,
             'country_rank' => 53,
             'region_rank' => 10,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -604,7 +551,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1638,
             'country_rank' => 54,
             'region_rank' => 6,
-            'history' => json_encode([]),
             'region_id' => 13,
         ]);
         Player::factory()->create([
@@ -615,7 +561,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1652,
             'country_rank' => 55,
             'region_rank' => 6,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -626,7 +571,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1664,
             'country_rank' => 56,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 12,
         ]);
         Player::factory()->create([
@@ -637,7 +581,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1734,
             'country_rank' => 57,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 12,
         ]);
         Player::factory()->create([
@@ -648,7 +591,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1744,
             'country_rank' => 58,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 2,
         ]);
         Player::factory()->create([
@@ -659,7 +601,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1800,
             'country_rank' => 59,
             'region_rank' => 6,
-            'history' => json_encode([]),
             'region_id' => 11,
         ]);
         Player::factory()->create([
@@ -670,7 +611,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1875,
             'country_rank' => 60,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 7,
         ]);
         Player::factory()->create([
@@ -681,7 +621,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1931,
             'country_rank' => 61,
             'region_rank' => 7,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -692,7 +631,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1942,
             'country_rank' => 62,
             'region_rank' => 8,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -703,7 +641,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1947,
             'country_rank' => 63,
             'region_rank' => 7,
-            'history' => json_encode([]),
             'region_id' => 10,
         ]);
         Player::factory()->create([
@@ -714,7 +651,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1980,
             'country_rank' => 64,
             'region_rank' => 5,
-            'history' => json_encode([]),
             'region_id' => 7,
         ]);
         Player::factory()->create([
@@ -725,7 +661,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1981,
             'country_rank' => 65,
             'region_rank' => 6,
-            'history' => json_encode([]),
             'region_id' => 7,
         ]);
         Player::factory()->create([
@@ -736,7 +671,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1986,
             'country_rank' => 66,
             'region_rank' => 5,
-            'history' => json_encode([]),
             'region_id' => 2,
         ]);
         Player::factory()->create([
@@ -747,7 +681,6 @@ class PlayerSeeder extends Seeder
             'rank' => 1991,
             'country_rank' => 67,
             'region_rank' => 3,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
         Player::factory()->create([
@@ -758,7 +691,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2081,
             'country_rank' => 68,
             'region_rank' => 11,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -769,7 +701,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2112,
             'country_rank' => 69,
             'region_rank' => 9,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -780,7 +711,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2116,
             'country_rank' => 70,
             'region_rank' => 10,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -791,7 +721,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2163,
             'country_rank' => 71,
             'region_rank' => 12,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -802,7 +731,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2328,
             'country_rank' => 72,
             'region_rank' => 11,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -813,7 +741,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2369,
             'country_rank' => 73,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
         Player::factory()->create([
@@ -824,7 +751,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2408,
             'country_rank' => 74,
             'region_rank' => 5,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
         Player::factory()->create([
@@ -835,7 +761,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2418,
             'country_rank' => 75,
             'region_rank' => 6,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
         Player::factory()->create([
@@ -846,7 +771,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2420,
             'country_rank' => 76,
             'region_rank' => 7,
-            'history' => json_encode([]),
             'region_id' => 7,
         ]);
         Player::factory()->create([
@@ -857,7 +781,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2472,
             'country_rank' => 77,
             'region_rank' => 7,
-            'history' => json_encode([]),
             'region_id' => 11,
         ]);
         Player::factory()->create([
@@ -868,7 +791,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2527,
             'country_rank' => 78,
             'region_rank' => 8,
-            'history' => json_encode([]),
             'region_id' => 10,
         ]);
         Player::factory()->create([
@@ -879,7 +801,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2532,
             'country_rank' => 79,
             'region_rank' => 13,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -890,7 +811,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2537,
             'country_rank' => 80,
             'region_rank' => 4,
-            'history' => json_encode([]),
             'region_id' => 6,
         ]);
         Player::factory()->create([
@@ -901,7 +821,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2541,
             'country_rank' => 81,
             'region_rank' => 6,
-            'history' => json_encode([]),
             'region_id' => 2,
         ]);
         Player::factory()->create([
@@ -912,7 +831,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2575,
             'country_rank' => 82,
             'region_rank' => 7,
-            'history' => json_encode([]),
             'region_id' => 13,
         ]);
         Player::factory()->create([
@@ -923,7 +841,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2597,
             'country_rank' => 83,
             'region_rank' => 5,
-            'history' => json_encode([]),
             'region_id' => 3,
         ]);
         Player::factory()->create([
@@ -934,7 +851,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2598,
             'country_rank' => 84,
             'region_rank' => 2,
-            'history' => json_encode([]),
             'region_id' => 4,
         ]);
         Player::factory()->create([
@@ -945,7 +861,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2626,
             'country_rank' => 85,
             'region_rank' => 8,
-            'history' => json_encode([]),
             'region_id' => 13,
         ]);
         Player::factory()->create([
@@ -956,7 +871,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2635,
             'country_rank' => 86,
             'region_rank' => 7,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
         Player::factory()->create([
@@ -967,7 +881,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2640,
             'country_rank' => 87,
             'region_rank' => 14,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -978,7 +891,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2658,
             'country_rank' => 88,
             'region_rank' => 15,
-            'history' => json_encode([]),
             'region_id' => 8,
         ]);
         Player::factory()->create([
@@ -989,7 +901,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2687,
             'country_rank' => 89,
             'region_rank' => 8,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
         Player::factory()->create([
@@ -1000,7 +911,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2760,
             'country_rank' => 90,
             'region_rank' => 8,
-            'history' => json_encode([]),
             'region_id' => 11,
         ]);
         Player::factory()->create([
@@ -1011,7 +921,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2772,
             'country_rank' => 91,
             'region_rank' => 9,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
         Player::factory()->create([
@@ -1022,7 +931,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2809,
             'country_rank' => 92,
             'region_rank' => 9,
-            'history' => json_encode([]),
             'region_id' => 11,
         ]);
         Player::factory()->create([
@@ -1033,7 +941,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2851,
             'country_rank' => 93,
             'region_rank' => 10,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
         Player::factory()->create([
@@ -1044,7 +951,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2862,
             'country_rank' => 94,
             'region_rank' => 11,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
         Player::factory()->create([
@@ -1055,7 +961,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2878,
             'country_rank' => 95,
             'region_rank' => 5,
-            'history' => json_encode([]),
             'region_id' => 6,
         ]);
         Player::factory()->create([
@@ -1066,7 +971,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2889,
             'country_rank' => 96,
             'region_rank' => 6,
-            'history' => json_encode([]),
             'region_id' => 2,
         ]);
         Player::factory()->create([
@@ -1077,7 +981,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2898,
             'country_rank' => 97,
             'region_rank' => 12,
-            'history' => json_encode([]),
             'region_id' => 1,
         ]);
         Player::factory()->create([
@@ -1088,7 +991,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2945,
             'country_rank' => 98,
             'region_rank' => 10,
-            'history' => json_encode([]),
             'region_id' => 11,
         ]);
         Player::factory()->create([
@@ -1099,7 +1001,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2971,
             'country_rank' => 99,
             'region_rank' => 11,
-            'history' => json_encode([]),
             'region_id' => 11,
         ]);
         Player::factory()->create([
@@ -1110,7 +1011,6 @@ class PlayerSeeder extends Seeder
             'rank' => 2987,
             'country_rank' => 100,
             'region_rank' => 12,
-            'history' => json_encode([]),
             'region_id' => 5,
         ]);
     }
