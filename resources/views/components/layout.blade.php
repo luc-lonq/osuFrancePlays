@@ -6,7 +6,9 @@
     <body>
         <x-navbar/>
         <div>
-            {{ $slot }}
+            <div class="flex justify-center mt-6">
+                {{ $slot }}
+            </div>
         </div>
     </body>
 </html>

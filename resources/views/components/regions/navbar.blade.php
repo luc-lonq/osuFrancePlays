@@ -2,7 +2,7 @@
     @foreach($regions as $region)
         <li>
             <a href="/regions/{{ $region['id'] }}"
-               class="inline-flex items-center px-4 py-3 {{ request()->is('regions/' . $region['id']) ? 'text-white bg-blue-700 rounded-lg active w-full dark:bg-blue-600' : 'rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white' }}">
+               class="inline-flex items-center px-4 py-3 {{ request()->is('regions/' . $region['id'] . '*') ? 'text-white bg-blue-700 rounded-lg active w-full dark:bg-blue-600' : 'rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white' }}">
                 {{ $region['name'] }}
             </a>
         </li>

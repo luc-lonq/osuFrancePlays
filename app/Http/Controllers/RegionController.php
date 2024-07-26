@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\History;
 use App\Models\Player;
 use App\Models\Region;
+use Carbon\Carbon;
 use Illuminate\View\View;
 
 class RegionController extends Controller
@@ -26,22 +27,45 @@ class RegionController extends Controller
         $players = Player::query()->where('region_id', $id)->orderBy('region_rank')->get();
         $last_history = History::query()->where('region_id', $id)->orderBy('updated_at', 'desc')->first();
         $players->sortByDesc('pp');
-        return view('regions',
+        $date = ($players->first()->updated_at);
+        $history_all = History::query()->where('region_id', $id)->orderBy('created_at', 'desc')->get();
+        $history_dates = [];
+        foreach ($history_all as $hist) {
+            $history_dates[] = $hist->date;
+        }
+        return view('regions.ranking',
             [
                 'regions' => $regions,
                 'players' => $players,
-                'lastHistory' => $last_history
+                'lastHistory' => $last_history,
+                'historyDates' => $history_dates,
+                'regionId' => $id,
+                'date' => $date,
             ]);
     }
 
-    public function history(int $id): View
+    public function history(int $id, string $date): View
     {
         $regions = Region::all();
-        $players = Player::query()->where('region_id', $id)->orderBy('region_rank')->get();
-        return view('regions',
+        $history = History::query()->where(['region_id' => $id, 'date' => $date])->first();
+        $history_all = History::query()->where('region_id', $id)->orderBy('created_at', 'desc')->get();
+        $history_dates = [];
+        foreach ($history_all as $hist) {
+            $history_dates[] = $hist->date;
+        }
+        $players = [];
+        foreach (json_decode($history->ranking, true) as $key=>$row) {
+            $player = Player::query()->where('osu_id', $key)->first();
+            $players[] = $player;
+        }
+        return view('regions.history',
             [
                 'regions' => $regions,
                 'players' => $players,
+                'history' => $history,
+                'historyDates' => $history_dates,
+                'regionId' => $id,
+                'date' => $date,
             ]);
     }
 }
