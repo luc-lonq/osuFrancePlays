@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OsuApiController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\SotwController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,8 +17,8 @@ Route::get('/regions/{id}/history', [RegionController::class, 'history']);
 
 Route::get('/regions/{id}/history/{date}', [RegionController::class, 'history']);
 
-Route::get('/sotw', function () {
-    return view('sotw');
-});
+Route::get('/sotw', [SotwController::class, 'show']);
+
+Route::get('/sotw/{date}', [SotwController::class, 'show']);
 
 Route::get('/players', [OsuApiController::class, 'updatePlayersData']);

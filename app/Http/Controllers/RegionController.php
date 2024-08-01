@@ -14,7 +14,7 @@ class RegionController extends Controller
     {
         $regions = Region::all();
         $players = [];
-        return view('regions',
+        return view('regions.ranking',
             [
                 'regions' => $regions,
                 'players' => $players
@@ -24,6 +24,7 @@ class RegionController extends Controller
     public function show(int $id): View
     {
         $regions = Region::all();
+        $region = Region::query()->where('id', $id)->first();
         $players = Player::query()->where('region_id', $id)->orderBy('region_rank')->get();
         $last_history = History::query()->where('region_id', $id)->orderBy('updated_at', 'desc')->first();
         $players->sortByDesc('pp');
@@ -39,7 +40,7 @@ class RegionController extends Controller
                 'players' => $players,
                 'lastHistory' => $last_history,
                 'historyDates' => $history_dates,
-                'regionId' => $id,
+                'region' => $region,
                 'date' => $date,
             ]);
     }
@@ -47,6 +48,7 @@ class RegionController extends Controller
     public function history(int $id, string $date): View
     {
         $regions = Region::all();
+        $region = Region::query()->where('id', $id)->first();
         $history = History::query()->where(['region_id' => $id, 'date' => $date])->first();
         $history_all = History::query()->where('region_id', $id)->orderBy('created_at', 'desc')->get();
         $history_dates = [];
@@ -64,7 +66,7 @@ class RegionController extends Controller
                 'players' => $players,
                 'history' => $history,
                 'historyDates' => $history_dates,
-                'regionId' => $id,
+                'region' => $region,
                 'date' => $date,
             ]);
     }
