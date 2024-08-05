@@ -113,6 +113,7 @@ class SotwSeeder extends Seeder
         SotwSession::factory()->create([
             'id' => 1,
             'sotw_id' => 1,
+            'video_path' => '/scores/carbone_meietruc.mp4',
             'mh' => json_encode([2,3,4,5,6]),
             'date' => Carbon::create(year:2024, month:7, day:22),
             'public' => false,
@@ -121,6 +122,7 @@ class SotwSeeder extends Seeder
         SotwSession::factory()->create([
             'id' => 2,
             'sotw_id' => 7,
+            'video_path' => '/scores/carbone_start.mp4',
             'mh' => json_encode([8,9,10,11]),
             'date' => Carbon::create(year:2024, month:7, day:15),
             'public' => false,
@@ -129,6 +131,7 @@ class SotwSeeder extends Seeder
         SotwSession::factory()->create([
             'id' => 3,
             'sotw_id' => 12,
+            'video_path' => '/scores/zeaqk_forget_noticed.mp4',
             'mh' => json_encode([13,14,15,16]),
             'date' => Carbon::create(year:2024, month:7, day:8),
             'public' => false,

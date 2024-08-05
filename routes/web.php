@@ -19,6 +19,8 @@ Route::get('/regions/{id}/history/{date}', [RegionController::class, 'history'])
 
 Route::get('/sotw', [SotwController::class, 'show']);
 
+Route::get('/sotw/stats/', [SotwController::class, 'stats']);
+
 Route::get('/sotw/{date}', [SotwController::class, 'show']);
 
 Route::get('/players', [OsuApiController::class, 'updatePlayersData']);

@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('sotw_sessions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Score::class, 'sotw_id');
+            $table->string('video_path');
             $table->json('mh');
             $table->date('date');
             $table->boolean('public');
