@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Player;
 use App\Models\Score;
 use App\Models\SotwSession;
+use Carbon\Carbon;
 use Illuminate\View\View;
 
 class SotwController extends Controller
@@ -41,9 +42,21 @@ class SotwController extends Controller
         ]);
     }
 
-    public function stats(): View
+    public function stats($year = null): View
     {
-        $sotw_sessions = SotwSession::all();
+        $years = [];
+        if (!$year){
+            $sotw_sessions = SotwSession::all()->sortByDesc('date');
+        }
+        else {
+            $sotw_sessions = SotwSession::query()->whereYear('date', $year)->get();
+        }
+        $years_sotw = SotwSession::all()->sortByDesc('date');
+        foreach ($years_sotw as $year_sotw) {
+            $years[] = Carbon::create($year_sotw->date)->format('Y');
+        }
+        $years = array_unique($years);
+
         $n_sotw = 0;
         $n_mhs = 0;
         $sotw_per_player = [];
@@ -118,6 +131,7 @@ class SotwController extends Controller
             'statsMh' => $stats_mh,
             'chartSotw' => $chart_sotw,
             'chartMh' => $chart_mh,
+            'years' => $years
         ]);
     }
 }

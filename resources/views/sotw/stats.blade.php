@@ -13,6 +13,28 @@
         </div>
         <div class="flex justify-between">
             <h1 class="text-3xl text-gray-800 dark:text-gray-200 mb-4">Statistiques</h1>
+            <button id="dropdownDateButton" data-dropdown-toggle="dropdownDate" data-dropdown-placement="bottom" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-3 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                Année
+                <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+            </button>
+            <div id="dropdownDate" class="z-10 hidden bg-white rounded-lg shadow w-30 dark:bg-gray-700">
+                <ul class="h-48 py-2 overflow-y-auto text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDateButton">
+                    <li>
+                        <a href="/sotw/stats" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                            Tout le temps
+                        </a>
+                    </li>
+                    @foreach($years as $year)
+                        <li>
+                            <a href="/sotw/stats/{{ $year }}" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                {{ $year }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
         <div class="flex justify-around mb-6">
             <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-4">

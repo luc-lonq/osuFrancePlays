@@ -21,6 +21,8 @@ Route::get('/sotw', [SotwController::class, 'show']);
 
 Route::get('/sotw/stats/', [SotwController::class, 'stats']);
 
+Route::get('/sotw/stats/{year}', [SotwController::class, 'stats']);
+
 Route::get('/sotw/{date}', [SotwController::class, 'show']);
 
 Route::get('/players', [OsuApiController::class, 'updatePlayersData']);
