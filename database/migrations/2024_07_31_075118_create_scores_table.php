@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Player::class);
+            $table->boolean('sotw');
             $table->string('image_path');
             $table->timestamps();
         });

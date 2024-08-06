@@ -3,6 +3,7 @@
 use App\Http\Controllers\OsuApiController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SotwController;
+use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,4 +26,6 @@ Route::get('/sotw/stats/{year}', [SotwController::class, 'stats']);
 
 Route::get('/sotw/{date}', [SotwController::class, 'show']);
 
-Route::get('/players', [OsuApiController::class, 'updatePlayersData']);
+//Route::get('/players', [OsuApiController::class, 'updatePlayersData']);
+
+Route::get('/players/{id}', [PlayerController::class, 'show']);

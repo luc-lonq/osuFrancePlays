@@ -17,96 +17,112 @@ class SotwSeeder extends Seeder
         Score::factory()->create([
             'id' => 1,
             'player_id' => 22,
+            'sotw' => true,
             'image_path' => '/scores/carbone_she_moves_like_a_knife.jpg'
         ]);
 
         Score::factory()->create([
             'id' => 2,
             'player_id' => 22,
+            'sotw' => false,
             'image_path' => '/scores/carbone_last_attack.jpg'
         ]);
 
         Score::factory()->create([
             'id' => 3,
             'player_id' => 20,
+            'sotw' => false,
             'image_path' => '/scores/ekoro_happppy_song.jpg'
         ]);
 
         Score::factory()->create([
             'id' => 4,
             'player_id' => 32,
+            'sotw' => false,
             'image_path' => '/scores/lonq_noir_psalm_dla_ciebie.jpg'
         ]);
 
         Score::factory()->create([
             'id' => 5,
             'player_id' => 40,
+            'sotw' => false,
             'image_path' => '/scores/oxvenn_embraced_by_the_flames.jpg'
         ]);
 
         Score::factory()->create([
             'id' => 6,
             'player_id' => 96,
+            'sotw' => false,
             'image_path' => '/scores/hardstcukc_kigurumi.jpg'
         ]);
 
         Score::factory()->create([
             'id' => 7,
             'player_id' => 22,
+            'sotw' => true,
             'image_path' => '/scores/carbone_start.jpg',
         ]);
 
         Score::factory()->create([
             'id' => 8,
             'player_id' => 22,
+            'sotw' => false,
             'image_path' => '/scores/carbone_endless_tears.jpg',
         ]);
 
         Score::factory()->create([
             'id' => 9,
             'player_id' => 32,
+            'sotw' => false,
             'image_path' => '/scores/lonq_noir_cross_over.jpg',
         ]);
 
         Score::factory()->create([
             'id' => 10,
             'player_id' => 66,
+            'sotw' => false,
             'image_path' => '/scores/mion_brazil.jpg',
         ]);
 
         Score::factory()->create([
             'id' => 11,
             'player_id' => 22,
+            'sotw' => false,
             'image_path' => '/scores/carbone_sunflower.jpg',
         ]);
 
         Score::factory()->create([
             'id' => 12,
             'player_id' => 20,
+            'sotw' => true,
             'image_path' => '/scores/ekoro_myth_orbis.jpg',
         ]);
 
         Score::factory()->create([
             'id' => 13,
             'player_id' => 10,
+            'sotw' => false,
             'image_path' => '/scores/asckar_my_heart_will_go_on.jpg',
         ]);
 
         Score::factory()->create([
             'id' => 14,
             'player_id' => 22,
+            'sotw' => false,
             'image_path' => '/scores/carbone_bang_bang.jpg',
         ]);
 
         Score::factory()->create([
             'id' => 15,
             'player_id' => 60,
+            'sotw' => false,
             'image_path' => '/scores/fiaee_baby_got_back.jpg',
         ]);
 
         Score::factory()->create([
             'id' => 16,
             'player_id' => 96,
+            'sotw' => false,
             'image_path' => '/scores/hardstcukc_quaver.jpg',
         ]);
 
