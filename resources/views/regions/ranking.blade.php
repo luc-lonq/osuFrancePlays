@@ -18,7 +18,7 @@
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row" class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                          <div class="flex items-center">
-                                             {{ $player['region_rank'] }}
+                                             {{ $player->region_rank }}
                                              @if(array_key_exists($player->osu_id, json_decode($lastHistory->ranking, true)))
                                                  @if(json_decode($lastHistory->ranking, true)[$player->osu_id]['region_rank'] - $player->region_rank > 0)
                                                      <x-regions.arrow_svg direction="up"/>
@@ -35,11 +35,11 @@
                                          </div>
                                     </th>
                                     <td class="px-6 py-3">
-                                        {{ $player['username'] }}
+                                        <a href="/players/{{ $player->id }}">{{ $player->username }}</a>
                                     </td>
                                     <td class="px-6 py-3">
                                         <div class="flex items-center">
-                                            {{ $player['pp'] }}pp
+                                            {{ $player->pp }}pp
                                             @if(array_key_exists($player->osu_id, json_decode($lastHistory->ranking, true)))
                                                 @if($player->pp - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] > 0)
                                                     <x-regions.arrow_svg direction="up"/>
@@ -57,7 +57,7 @@
                                     </td>
                                     <td class="px-6 py-3">
                                         <div class="flex items-center">
-                                            {{ $player['country_rank'] }}
+                                            {{ $player->country_rank }}
                                             @if(array_key_exists($player->osu_id, json_decode($lastHistory->ranking, true)))
                                                 @if(json_decode($lastHistory->ranking, true)[$player->osu_id]['country_rank'] - $player->country_rank > 0)
                                                     <x-regions.arrow_svg direction="up"/>
@@ -75,7 +75,7 @@
                                     </td>
                                     <td class="px-6 py-3">
                                         <div class="flex items-center">
-                                            {{ $player['rank'] }}
+                                            {{ $player->rank }}
                                             @if(array_key_exists($player->osu_id, json_decode($lastHistory->ranking, true)))
                                                 @if (json_decode($lastHistory->ranking, true)[$player->osu_id]['rank'] - $player->rank > 0)
                                                     <x-regions.arrow_svg direction="up"/>

@@ -18,7 +18,8 @@ class SotwSeeder extends Seeder
             'id' => 1,
             'player_id' => 22,
             'sotw' => true,
-            'image_path' => '/scores/carbone_she_moves_like_a_knife.jpg'
+            'image_path' => '/scores/carbone_she_moves_like_a_knife.jpg',
+            'video_path' => '/scores/carbone_meietruc.mp4'
         ]);
 
         Score::factory()->create([
@@ -61,6 +62,7 @@ class SotwSeeder extends Seeder
             'player_id' => 22,
             'sotw' => true,
             'image_path' => '/scores/carbone_start.jpg',
+            'video_path' => '/scores/carbone_start.mp4',
         ]);
 
         Score::factory()->create([
@@ -96,6 +98,7 @@ class SotwSeeder extends Seeder
             'player_id' => 20,
             'sotw' => true,
             'image_path' => '/scores/ekoro_myth_orbis.jpg',
+            'video_path' => '/scores/zeaqk_forget_noticed.mp4',
         ]);
 
         Score::factory()->create([
@@ -129,7 +132,6 @@ class SotwSeeder extends Seeder
         SotwSession::factory()->create([
             'id' => 1,
             'sotw_id' => 1,
-            'video_path' => '/scores/carbone_meietruc.mp4',
             'mh' => json_encode([2,3,4,5,6]),
             'date' => Carbon::create(year:2024, month:7, day:22),
             'public' => false,
@@ -138,7 +140,6 @@ class SotwSeeder extends Seeder
         SotwSession::factory()->create([
             'id' => 2,
             'sotw_id' => 7,
-            'video_path' => '/scores/carbone_start.mp4',
             'mh' => json_encode([8,9,10,11]),
             'date' => Carbon::create(year:2024, month:7, day:15),
             'public' => false,
@@ -147,7 +148,6 @@ class SotwSeeder extends Seeder
         SotwSession::factory()->create([
             'id' => 3,
             'sotw_id' => 12,
-            'video_path' => '/scores/zeaqk_forget_noticed.mp4',
             'mh' => json_encode([13,14,15,16]),
             'date' => Carbon::create(year:2024, month:7, day:8),
             'public' => false,

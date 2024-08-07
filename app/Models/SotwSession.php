@@ -12,6 +12,7 @@ class SotwSession extends Model
     protected $fillable = [
         'sotw_id',
         'mh',
+        'date',
         'public',
         'twitter'
     ];

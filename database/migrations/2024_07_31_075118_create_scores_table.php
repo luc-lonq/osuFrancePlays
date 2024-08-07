@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(Player::class);
             $table->boolean('sotw');
             $table->string('image_path');
+            $table->string('video_path')->nullable();
             $table->timestamps();
         });
     }

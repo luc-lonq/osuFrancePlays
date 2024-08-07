@@ -13,7 +13,7 @@ class SotwController extends Controller
     public function show($date = null): View
     {
         if($date == null) {
-            $sotw_session = SotwSession::all()->sortByDesc('created_at')->first();
+            $sotw_session = SotwSession::all()->sortByDesc('date')->first();
         }
         else {
             $sotw_session = SotwSession::query()->where('date', $date)->first();
@@ -32,7 +32,7 @@ class SotwController extends Controller
         }
 
         $sotws = SotwSession::all()->sortByDesc('date');
-        $sotws->forget(0);
+        $sotws->shift();
 
         return view('sotw.index', [
             'sotwSession' => $sotw_session,

@@ -22,7 +22,7 @@
                             <td class="px-6 py-3">
                                 @foreach($players as $player)
                                     @if($player->osu_id == $key)
-                                        {{ $player->username }}
+                                        <a href="/players/{{ $player->id }}">{{ $player->username }}</a>
                                     @endif
                                 @endforeach
                             </td>

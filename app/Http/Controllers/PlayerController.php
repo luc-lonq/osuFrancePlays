@@ -15,7 +15,7 @@ class PlayerController extends Controller
     {
         $player = Player::find($id);
         $region = Region::find($player->region_id);
-        $mhs = Score::all();
+        $mhs = Score::all()->sortByDesc('created_at');
         $mhs_player = [];
         $sotws_player = [];
         foreach ($mhs as $mh) {

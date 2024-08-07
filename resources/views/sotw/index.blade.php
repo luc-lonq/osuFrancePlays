@@ -9,7 +9,6 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z"/>
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z"/>
                     </svg>
-
                 </button>
             </a>
         </div>
@@ -20,18 +19,18 @@
         <div class="grid gap-4">
             <div class="grid grid-cols-2 gap-4">
                 <figure>
-                    <img class="h-auto max-w-full rounded-lg" src="{{ $sotw['score']->image_path }}" alt="">
+                    <img class="h-auto max-w-full rounded-lg" src="{{ Storage::url($sotw['score']->image_path) }}" alt="">
                     <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">{{ $sotw['player']->username}}</figcaption>
                 </figure>
                 <video class="w-full rounded-lg" autoplay muted controls>
-                    <source src="{{ $sotwSession->video_path }}" type="video/mp4">
+                    <source src="{{ Storage::url($sotw['score']->video_path) }}" type="video/mp4">
                 </video>
             </div>
             <div class="grid grid-cols-3 gap-4">
                 @foreach($mhs as $mh)
                     <div class="z-0 hover:z-50">
                         <figure>
-                            <img class="h-auto max-w-full rounded-lg hover:scale-150 transform transition duration-300" src="{{ $mh['score']->image_path }}" alt="">
+                            <img class="h-auto max-w-full rounded-lg hover:scale-150 transform transition duration-300" src="{{ Storage::url($mh['score']->image_path) }}" alt="">
                             <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">{{ $mh['player']->username}}</figcaption>
                         </figure>
                     </div>
