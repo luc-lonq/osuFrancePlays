@@ -19,7 +19,7 @@
                 <div class="flex grid grid-cols-3 gap-4">
                     <div class="w-full">
                         <label for="player_id_sotw" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Joueur</label>
-                        <select id="player_id_sotw" name="player_id_sotw" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select required id="player_id_sotw" name="player_id_sotw" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option value="0"></option>
                         @foreach($players as $player)
                                 <option value="{{ $player->id }}">{{ $player->username }}</option>
@@ -63,38 +63,5 @@
     </div>
 </x-admin.layout>
 
-<script>
-    function addMh() {
-        const mhDiv = document.getElementById('mh_div')
-        const mhPlayerDiv = document.getElementById('mh_player_div')
-        const mhScreenDiv = document.getElementById('mh_screen_div')
+<x-admin.script-mh/>
 
-        const mhPlayerDivClone = mhPlayerDiv.cloneNode(true)
-        const mhScreenDivClone = mhScreenDiv.cloneNode(true)
-
-        mhPlayerDivClone.children[0].setAttribute('for','player_id_mh_' + (mhDiv.childElementCount / 2 + 1))
-        mhPlayerDivClone.children[1].setAttribute('id','player_id_mh_' + (mhDiv.childElementCount / 2 + 1))
-        mhPlayerDivClone.children[1].setAttribute('name','player_id_mh_' + (mhDiv.childElementCount / 2 + 1))
-
-        mhScreenDivClone.children[0].setAttribute('for','screen_mh_' + (mhDiv.childElementCount / 2 + 1))
-        mhScreenDivClone.children[1].setAttribute('id','screen_mh_' + (mhDiv.childElementCount / 2 + 1))
-        mhScreenDivClone.children[1].setAttribute('name','screen_mh_' + (mhDiv.childElementCount / 2 + 1))
-
-        mhDiv.append(mhPlayerDivClone)
-        mhDiv.append(mhScreenDivClone)
-    }
-
-    function removeMh() {
-        const mhDiv = document.getElementById('mh_div')
-        const mhPlayerDiv = document.getElementsByClassName('mh_player_div')
-        const mhScreenDiv = document.getElementsByClassName('mh_screen_div')
-
-        if(mhPlayerDiv.length > 1) {
-            mhDiv.removeChild(mhPlayerDiv[mhPlayerDiv.length - 1])
-        }
-        if(mhScreenDiv.length > 1) {
-            mhDiv.removeChild(mhScreenDiv[mhScreenDiv.length - 1])
-        }
-    }
-
-</script>

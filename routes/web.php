@@ -28,4 +28,5 @@ Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/admin/sotw', [AdminController::class, 'sotw']);
 Route::get('/admin/sotw/create', [AdminController::class, 'sotwCreate']);
 Route::post('/admin/sotw/store', [AdminController::class, 'sotwStore']);
-Route::post('/admin/sotw/update', [AdminController::class, 'sotwUpdate']);
+Route::get( '/admin/sotw/edit/{id}', [AdminController::class, 'sotwEdit']);
+Route::post('/admin/sotw/update/{id}', [AdminController::class, 'sotwUpdate']);

@@ -17,7 +17,7 @@
             <div class="grid grid-cols-2 gap-4 mb-6">
                 @foreach($sotws as $sotw)
                     <img class="h-auto max-w-full rounded-lg" src="{{ Storage::url($sotw->image_path) }}" alt="">
-                    <video class="w-full" controls>
+                    <video class="w-full rounded-lg" controls>
                         <source src="{{ Storage::url($sotw->video_path) }}" type="video/mp4">
                     </video>
                 @endforeach

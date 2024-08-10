@@ -99,8 +99,115 @@ class AdminController extends Controller
         return redirect('admin/sotw');
     }
 
-    public function sotwUpdate(Request $request, SotwSession $session): View
+    public function sotwEdit(int $id): View
     {
+        $sotw_session = SotwSession::query()->find($id);
+        $sotw = Score::query()->find($sotw_session->sotw_id);
+        $mhs = [];
+        foreach (json_decode($sotw_session->mh) as $mh) {
+            $mhs[] = Score::query()->find($mh);
+        }
+        $players = Player::all()->sortBy('username');
 
+        return view('admin.sotw-edit', [
+            'sotwSession' => $sotw_session,
+            'sotw' => $sotw,
+            'mhs' => $mhs,
+            'players' => $players,
+        ]);
+    }
+
+    public function sotwUpdate(int $id, Request $request, SotwSession $session)
+    {
+        $request->validate([
+            'date' => 'required',
+        ]);
+
+        $date = Carbon::create($request['date'])->format('Y-m-d');
+
+        $sotw_session = SotwSession::query()->find($id);
+        $sotw = Score::query()->find($sotw_session->sotw_id);
+
+
+        if ($request->hasFile('screen_sotw')) {
+            $screen_sotw = $request->file('screen_sotw');
+            $screen_path = $screen_sotw->store('scores', 'public');
+        }
+        else {
+            $screen_path = $sotw->image_path;
+        }
+
+        if ($request->hasFile('clip_sotw')) {
+            $clip_sotw = $request->file('clip_sotw');
+            $clip_path = $clip_sotw->store('scores', 'public');
+        }
+        else {
+            $clip_path = $sotw->video_path;
+        }
+
+        Score::query()->find($sotw->id)->update([
+            'player_id' => $request['player_id_sotw'],
+            'image_path' => $screen_path,
+            'video_path' => $clip_path,
+        ]);
+
+        $mhs = [];
+        foreach (json_decode($sotw_session->mh) as $mh) {
+            if ($request->hasFile('screen_mh_' . $mh)) {
+                $screen_sotw = $request->file('screen_mh_' . $mh);
+                $screen_path = $screen_sotw->store('scores', 'public');
+            }
+            else {
+                $screen_path = Score::query()->find($mh)->image_path;
+            }
+
+            if ($request['player_id_mh_' . $mh]) {
+                Score::query()->find($mh)->update([
+                    'player_id' => $request['player_id_mh_' . $mh],
+                    'image_path' => $screen_path,
+                ]);
+                $mhs[] = $mh;
+            }
+            else {
+                Score::query()->find($mh)->delete();
+            }
+        }
+
+        $requestAll = $request->all();
+
+        $newMhPlayerKeys = preg_grep("/^player_id_mh_new_/", array_keys($requestAll));
+        $newMhPlayerValues = array_intersect_key($requestAll, array_flip($newMhPlayerKeys));
+        $newMhScreenKeys = preg_grep("/^screen_mh_new_/", array_keys($requestAll));
+        $newMhScreenValues = array_intersect_key($requestAll, array_flip($newMhScreenKeys));
+
+        $newMhs = [];
+        $index = 0;
+        foreach ($newMhPlayerValues as $player) {
+            $newMhs[$index]['player'] = $player;
+            $index++;
+        }
+
+        $index = 0;
+        foreach ($newMhScreenValues as $key=>$screen) {
+            $screen = $request->file($key);
+            $screen_path = $screen->store('scores', 'public');
+            $newMhs[$index]['screen'] = $screen_path;
+            $index++;
+        }
+
+        foreach ($newMhs as $mh) {
+            $mhs[] = Score::query()->create([
+                'player_id' => $mh['player'],
+                'sotw' => false,
+                'image_path' => $mh['screen'],
+            ])->id;
+        }
+
+        SotwSession::query()->find($id)->update([
+            'date' => $date,
+            'mh' => json_encode($mhs),
+        ]);
+
+        return redirect('admin/sotw/edit/' . $id);
     }
 }
