@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Player;
+use App\Models\Region;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->integer('osu_id');
             $table->string('username');
-            $table->integer('pp');
-            $table->integer('rank');
-            $table->integer('country_rank');
-            $table->integer('region_rank');
-            $table->foreignIdFor(\App\Models\Region::class);
+            $table->integer('pp')->nullable();
+            $table->integer('rank')->nullable();
+            $table->integer('country_rank')->nullable();
+            $table->integer('region_rank')->nullable();
+            $table->foreignIdFor(Region::class)->nullable();
             $table->timestamps();
         });
     }

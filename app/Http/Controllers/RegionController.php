@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\History;
 use App\Models\Player;
 use App\Models\Region;
-use Carbon\Carbon;
 use Illuminate\View\View;
 
 class RegionController extends Controller

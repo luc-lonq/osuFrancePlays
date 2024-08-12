@@ -35,7 +35,7 @@ class OsuApiController extends Controller
             'timeout' => 5,
         ]);
 
-        return json_decode($response->getBody()->getContents(), true)['access_token'];
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     public function getFrenchRanking(int $page)
@@ -46,7 +46,7 @@ class OsuApiController extends Controller
                 'page' => $page,
             ],
             'headers' => [
-                'Authorization' => 'Bearer ' . $this->getAccessToken()
+                'Authorization' => $this->getAccessToken()['token_type'] . ' ' . $this->getAccessToken()['access_token']
             ],
             'timeout' => 5,
         ]);

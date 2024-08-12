@@ -7,17 +7,26 @@ use App\Models\Score;
 use App\Models\SotwSession;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class AdminController extends Controller
 {
-    public function index(): View
+    public function index()
     {
+        if(Auth::guest()) {
+            abort(403);
+        }
+
         return view('admin.index');
     }
 
     public function sotw(): View
     {
+        if(Auth::guest()) {
+            abort(403);
+        }
+
         $sessions = SotwSession::all()->sortByDesc('date');
         $scores = Score::query()->whereDate('sotw', true)->get();
         $sotws = [];
@@ -41,6 +50,10 @@ class AdminController extends Controller
 
     public function sotwCreate(): View
     {
+        if(Auth::guest()) {
+            abort(403);
+        }
+
         $players = Player::all()->sortBy('username');
 
         return view('admin.sotw-create', [
@@ -50,6 +63,10 @@ class AdminController extends Controller
 
     public function sotwStore(Request $request)
     {
+        if(Auth::guest()) {
+            abort(403);
+        }
+
         $request->validate([
             'date' => 'required',
             'player_id_sotw' => 'required',
@@ -101,6 +118,10 @@ class AdminController extends Controller
 
     public function sotwEdit(int $id): View
     {
+        if(Auth::guest()) {
+            abort(403);
+        }
+
         $sotw_session = SotwSession::query()->find($id);
         $sotw = Score::query()->find($sotw_session->sotw_id);
         $mhs = [];
@@ -117,8 +138,12 @@ class AdminController extends Controller
         ]);
     }
 
-    public function sotwUpdate(int $id, Request $request, SotwSession $session)
+    public function sotwUpdate(int $id, Request $request)
     {
+        if(Auth::guest()) {
+            abort(403);
+        }
+
         $request->validate([
             'date' => 'required',
         ]);
@@ -127,7 +152,6 @@ class AdminController extends Controller
 
         $sotw_session = SotwSession::query()->find($id);
         $sotw = Score::query()->find($sotw_session->sotw_id);
-
 
         if ($request->hasFile('screen_sotw')) {
             $screen_sotw = $request->file('screen_sotw');

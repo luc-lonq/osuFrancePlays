@@ -12,30 +12,34 @@
                 </button>
             </a>
         </div>
-        <div class="flex justify-between">
-            <h1 class="text-3xl text-gray-800 dark:text-gray-200 mb-4">Semaine du {{ \Carbon\Carbon::create($sotwSession->date)->translatedFormat('d F Y') }} au {{ \Carbon\Carbon::create($sotwSession->date)->addDays(6)->translatedFormat('d F Y') }}</h1>
-            <x-sotw.date_dropdown :sotws="$sotws"/>
-        </div>
-        <div class="grid gap-4">
-            <div class="grid grid-cols-2 gap-4">
-                <figure>
-                    <img class="h-auto max-w-full rounded-lg" src="{{ Storage::url($sotw['score']->image_path) }}" alt="">
-                    <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">{{ $sotw['player']->username}}</figcaption>
-                </figure>
-                <video class="w-full rounded-lg" autoplay muted controls>
-                    <source src="{{ Storage::url($sotw['score']->video_path) }}" type="video/mp4">
-                </video>
+        @if(isset($sotw_session))
+            <div class="flex justify-between">
+                <h1 class="text-3xl text-gray-800 dark:text-gray-200 mb-4">Semaine du {{ \Carbon\Carbon::create($sotwSession->date)->translatedFormat('d F Y') }} au {{ \Carbon\Carbon::create($sotwSession->date)->addDays(6)->translatedFormat('d F Y') }}</h1>
+                <x-sotw.date_dropdown :sotws="$sotws"/>
             </div>
-            <div class="grid grid-cols-3 gap-4">
-                @foreach($mhs as $mh)
-                    <div class="z-0 hover:z-50">
-                        <figure>
-                            <img class="h-auto max-w-full rounded-lg hover:scale-150 transform transition duration-300" src="{{ Storage::url($mh['score']->image_path) }}" alt="">
-                            <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">{{ $mh['player']->username}}</figcaption>
-                        </figure>
-                    </div>
-                @endforeach
+            <div class="grid gap-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <figure>
+                        <img class="h-auto max-w-full rounded-lg" src="{{ Storage::url($sotw['score']->image_path) }}" alt="">
+                        <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">{{ $sotw['player']->username}}</figcaption>
+                    </figure>
+                    <video class="w-full rounded-lg" autoplay muted controls>
+                        <source src="{{ Storage::url($sotw['score']->video_path) }}" type="video/mp4">
+                    </video>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    @foreach($mhs as $mh)
+                        <div class="z-0 hover:z-50">
+                            <figure>
+                                <img class="h-auto max-w-full rounded-lg hover:scale-150 transform transition duration-300" src="{{ Storage::url($mh['score']->image_path) }}" alt="">
+                                <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">{{ $mh['player']->username}}</figcaption>
+                            </figure>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @else
+            <p class="tracking-tight text-gray-500 md:text-lg dark:text-gray-400">Il n'existe pas encore de Score of the Week</p>
+        @endif
     </div>
 </x-layout>
