@@ -68,7 +68,7 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="w-full mh_player_div hidden" id="new_mh_player_div">
+                <div class="w-full hidden" id="new_mh_player_div">
                     <label for="player_id_mh_temp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Joueur</label>
                     <select required id="player_id_mh_temp" name="player_id_mh_temp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option value="0"></option>
@@ -77,7 +77,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="w-full mh_screen_div hidden" id="new_mh_screen_div">
+                <div class="w-full hidden" id="new_mh_screen_div">
                     <label for="screen_mh_temp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Screen</label>
                     <input id="screen_mh_temp" name="screen_mh_temp" class="pr-3 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" type="file">
                 </div>
@@ -106,12 +106,14 @@
 
         mhPlayerDivClone.setAttribute('id', 'mh_player_div')
         mhPlayerDivClone.classList.remove('hidden')
+        mhPlayerDivClone.classList.add('mh_player_div')
         mhPlayerDivClone.children[0].setAttribute('for','player_id_mh_new_' + (mhDiv.childElementCount / 2 + 1))
         mhPlayerDivClone.children[1].setAttribute('id','player_id_mh_new_' + (mhDiv.childElementCount / 2 + 1))
         mhPlayerDivClone.children[1].setAttribute('name','player_id_mh_new_' + (mhDiv.childElementCount / 2 + 1))
 
         mhScreenDivClone.setAttribute('id', 'mh_screen_div')
         mhScreenDivClone.classList.remove('hidden')
+        mhScreenDivClone.classList.add('mh_screen_div')
         mhScreenDivClone.children[0].setAttribute('for','screen_mh_new_' + (mhDiv.childElementCount / 2 + 1))
         mhScreenDivClone.children[1].setAttribute('id','screen_mh_new_' + (mhDiv.childElementCount / 2 + 1))
         mhScreenDivClone.children[1].setAttribute('name','screen_mh_new_' + (mhDiv.childElementCount / 2 + 1))

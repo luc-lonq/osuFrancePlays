@@ -11,7 +11,7 @@
                 </button>
                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
                     <div class="px-4 py-3">
-                        <span class="block text-sm text-gray-900 dark:text-white">{{ Auth::user()->username }}</span>
+                        <a href="/players/{{ Auth::user()->player_id }}" class="block text-sm text-gray-900 dark:text-white">{{ Auth::user()->username }}</a>
                     </div>
                     <ul class="py-2" aria-labelledby="user-menu-button">
                         @if(Auth::user()->admin)
@@ -20,7 +20,7 @@
                             </li>
                         @endif
                         <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Paramètres</a>
+                            <a href="/players/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Paramètres</a>
                         </li>
                         <li>
                             <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Se déconnecter</a>
@@ -30,7 +30,7 @@
             @endauth
             @guest
                 <a href="https://osu.ppy.sh/oauth/authorize?client_id=33380&redirect_uri=http://localhost/login&response_type=code&scope=public+identify">
-                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <button type="button" class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80">
                         Se connecter avec osu!
                     </button>
                 </a>

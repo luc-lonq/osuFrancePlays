@@ -12,7 +12,7 @@
                 </button>
             </a>
         </div>
-        @if(isset($sotw_session))
+        @if(isset($sotwSession))
             <div class="flex justify-between">
                 <h1 class="text-3xl text-gray-800 dark:text-gray-200 mb-4">Semaine du {{ \Carbon\Carbon::create($sotwSession->date)->translatedFormat('d F Y') }} au {{ \Carbon\Carbon::create($sotwSession->date)->addDays(6)->translatedFormat('d F Y') }}</h1>
                 <x-sotw.date_dropdown :sotws="$sotws"/>

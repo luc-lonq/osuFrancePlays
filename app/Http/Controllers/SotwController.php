@@ -12,7 +12,7 @@ class SotwController extends Controller
 {
     public function show($date = null): View
     {
-        if($date == null) {
+        if(!$date) {
             $sotw_session = SotwSession::all()->sortByDesc('date')->first();
         }
         else {

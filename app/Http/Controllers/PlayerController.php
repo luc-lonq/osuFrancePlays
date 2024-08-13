@@ -7,6 +7,7 @@ use App\Models\Region;
 use App\Models\Score;
 use App\Models\SotwSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class PlayerController extends Controller
@@ -35,5 +36,26 @@ class PlayerController extends Controller
             'mhs' => $mhs_player,
             'sotws' => $sotws_player,
         ]);
+    }
+
+    public function edit(): View {
+        $user = Auth::user();
+
+        $player = Player::query()->find($user->player_id);
+
+        $regions = Region::all();
+
+        return view('player.edit', [
+            'player' => $player,
+            'regions' => $regions,
+        ]);
+    }
+
+    public function update(int $id, Request $request) {
+        $player = Player::query()->find($id);
+        $player->new_region = $request->region;
+        $player->save();
+
+        return redirect('/players/settings');
     }
 }

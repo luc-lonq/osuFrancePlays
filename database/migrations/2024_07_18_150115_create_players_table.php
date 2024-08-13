@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('country_rank')->nullable();
             $table->integer('region_rank')->nullable();
             $table->foreignIdFor(Region::class)->nullable();
+            $table->foreignIdFor(Region::class, 'new_region')->nullable();
             $table->timestamps();
         });
     }

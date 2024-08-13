@@ -64,6 +64,10 @@ class OsuApiController extends Controller
                     $player->pp = $ranking['pp'];
                     $player->rank = $ranking['global_rank'];
                     $player->country_rank = ($page - 1) * 50 + $key + 1;
+                    if ($player->new_region) {
+                        $player->region_id = $player->new_region;
+                        $player->new_region = null;
+                    }
                     $player->save();
                 }
             }
