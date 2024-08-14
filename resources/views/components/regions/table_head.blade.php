@@ -1,4 +1,4 @@
-<thead class="text-xs text-white bg-blue-700 uppercase dark:bg-blue-600">
+<thead class="text-xs text-white bg-gradient-to-br from-purple-600 to-blue-500 uppercase">
 <tr>
     <th scope="col" class="px-6 py-3">
         Rang
