@@ -47,8 +47,16 @@
                             {{ count(json_decode($sotw['session']->mh)) }}
                         </td>
                         <td class="px-6 py-4">
-                            <a href="/admin/sotw/edit/{{ $sotw['session']->id }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</a>
-                            <a href="/admin/sotw/delete/{{ $sotw['session']->id }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Supprimer</a>
+                            <div class="mb-2">
+                                <a href="/admin/sotw/edit/{{ $sotw['session']->id }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                    <x-button-primary submit>Modifier</x-button-primary>
+                                </a>
+                            </div>
+                            <form method="POST" action="/admin/sotw/delete/{{ $sotw['session']->id }}">
+                                @csrf
+                                @method('delete')
+                                <x-button-secondary submit>Supprimer</x-button-secondary>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
