@@ -22,7 +22,6 @@ Route::get('/sotw/stats/', [SotwController::class, 'stats']);
 Route::get('/sotw/stats/{year}', [SotwController::class, 'stats']);
 Route::get('/sotw/{date}', [SotwController::class, 'show']);
 
-Route::get('/players', [OsuApiController::class, 'updatePlayersData']);
 Route::get('/players/settings', [PlayerController::class, 'edit']);
 Route::post('/players/update/{id}', [PlayerController::class, 'update']);
 Route::get('/players/{id}', [PlayerController::class, 'show']);

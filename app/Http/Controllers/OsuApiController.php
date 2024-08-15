@@ -71,6 +71,7 @@ class OsuApiController extends Controller
                     $player->save();
                 }
             }
+            sleep(2);
         }
         $this->sortRegionsRanking();
     }

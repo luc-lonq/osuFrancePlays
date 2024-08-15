@@ -26,8 +26,13 @@ class RegionController extends Controller
         $region = Region::query()->where('id', $id)->first();
         $players = Player::query()->where('region_id', $id)->orderBy('region_rank')->get();
         $last_history = History::query()->where('region_id', $id)->orderBy('updated_at', 'desc')->first();
-        $players->sortByDesc('pp');
-        $date = ($players->first()->updated_at);
+
+        if (!empty(json_decode($players))) {
+            $players->sortByDesc('pp');
+            $date = ($players->first()->updated_at);
+        }
+        else $date = null;
+
         $history_all = History::query()->where('region_id', $id)->orderBy('created_at', 'desc')->get();
         $history_dates = [];
         foreach ($history_all as $hist) {

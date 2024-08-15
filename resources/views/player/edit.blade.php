@@ -14,8 +14,8 @@
                                     <option value="{{ $region->id }}" >{{ $region->name }}</option>
                                 @elseif($region->id == $player->new_region)
                                     <option value="{{ $region->id }}" selected>{{ $region->name }}</option>
-                                @elseif($player->new_region != null)
-                                    <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                @elseif($player->new_region == null)
+                                    <option value="{{ $region->id }}" selected>{{ $region->name }}</option>
                                 @endif
                             @endforeach
                         </select>
