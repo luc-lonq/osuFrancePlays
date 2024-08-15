@@ -18,18 +18,21 @@
                 <x-sotw.date_dropdown :sotws="$sotws"/>
             </div>
             <div class="grid gap-4">
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-4 z-50">
                     <figure>
                         <img class="h-auto max-w-full rounded-lg" src="{{ Storage::url($sotw['score']->image_path) }}" alt="">
                         <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">{{ $sotw['player']->username}}</figcaption>
                     </figure>
-                    <video class="w-full rounded-lg" autoplay muted controls>
-                        <source src="{{ Storage::url($sotw['score']->video_path) }}" type="video/mp4">
-                    </video>
+                    <figure>
+                        <video class="w-full rounded-lg" controls>
+                            <source src="{{ Storage::url($sotw['score']->video_path) }}" type="video/mp4">
+                        </video>
+                        <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">Clip</figcaption>
+                    </figure>
                 </div>
                 <div class="grid grid-cols-3 gap-4">
                     @foreach($mhs as $mh)
-                        <div class="z-0 hover:z-50">
+                        <div class="z-0 hover:z-20">
                             <figure>
                                 <img class="h-auto max-w-full rounded-lg hover:scale-150 transform transition duration-300" src="{{ Storage::url($mh['score']->image_path) }}" alt="">
                                 <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">{{ $mh['player']->username}}</figcaption>

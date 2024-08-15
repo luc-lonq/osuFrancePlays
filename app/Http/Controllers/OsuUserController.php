@@ -31,7 +31,7 @@ class OsuUserController extends Controller
                 'client_secret' => $this->clientSecret,
                 'code' => $request['code'],
                 'grant_type' => 'authorization_code',
-                'redirect_uri' => 'http://localhost/login',
+                'redirect_uri' => env('OSU_REDIRECT_URI'),
             ],
             'timeout' => 5,
         ]);

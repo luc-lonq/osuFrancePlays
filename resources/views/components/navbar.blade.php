@@ -29,7 +29,7 @@
                 </div>
             @endauth
             @guest
-                <a href="https://osu.ppy.sh/oauth/authorize?client_id=33380&redirect_uri=http://localhost/login&response_type=code&scope=public+identify">
+                <a href="https://osu.ppy.sh/oauth/authorize?client_id=33380&redirect_uri={{ env('OSU_REDIRECT_URI') }}&response_type=code&scope=public+identify">
                     <x-button-primary>
                         Se connecter avec osu!
                     </x-button-primary>
