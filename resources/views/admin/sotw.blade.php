@@ -48,6 +48,7 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="/admin/sotw/edit/{{ $sotw['session']->id }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</a>
+                            <a href="/admin/sotw/delete/{{ $sotw['session']->id }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Supprimer</a>
                         </td>
                     </tr>
                 @endforeach

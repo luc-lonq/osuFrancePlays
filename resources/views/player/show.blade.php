@@ -7,7 +7,11 @@
                 <p class="text-xl text-gray-900 dark:text-white">PP : {{ $player->pp }}pp</p>
                 <p class="text-xl text-gray-900 dark:text-white">Rang global : {{ $player->rank }}</p>
                 <p class="text-xl text-gray-900 dark:text-white">Rang national : {{ $player->country_rank }}</p>
-                <p class="text-xl text-gray-900 dark:text-white">Rang régional : {{ $player->region_rank }} ({{ $region->name }})</p>
+                @if($region)
+                    <p class="text-xl text-gray-900 dark:text-white">Rang régional : {{ $player->region_rank }} ({{ $region->name }})</p>
+                @else
+                    <p class="text-xl text-gray-900 dark:text-white">Rang régional : -</p>
+                @endif
                 <p class="text-xl text-gray-900 dark:text-white">Scores of the week : {{ count($sotws) }}</p>
                 <p class="text-xl text-gray-900 dark:text-white">Mentions honorables: {{ count($mhs) }}</p>
             </div>

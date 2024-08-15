@@ -234,4 +234,14 @@ class AdminController extends Controller
 
         return redirect('admin/sotw/edit/' . $id);
     }
+
+    public function sotwDelete(int $id) {
+        $sotw_session = SotwSession::query()->find($id);
+        foreach (json_decode($sotw_session->mh) as $mh) {
+            Score::query()->find($mh)->delete();
+        }
+        $sotw_session->delete();
+
+        return redirect('/admin/sotw');
+    }
 }

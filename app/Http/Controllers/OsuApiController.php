@@ -70,6 +70,15 @@ class OsuApiController extends Controller
                     }
                     $player->save();
                 }
+                else {
+                    Player::query()->create([
+                        'osu_id' => $ranking['user']['id'],
+                        'username' => $ranking['user']['username'],
+                        'pp' => $ranking['pp'],
+                        'rank' => $ranking['global_rank'],
+                        'country_rank' => ($page - 1) * 50 + $key + 1,
+                    ]);
+                }
             }
             sleep(2);
         }
