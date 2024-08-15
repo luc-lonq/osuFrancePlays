@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(RegionSeeder::class);
-        $this->call(PlayerSeeder::class);
-        $this->call(SotwSeeder::class);
+        //$this->call(PlayerSeeder::class);
+        //$this->call(SotwSeeder::class);
     }
 }
