@@ -25,9 +25,9 @@
         </div>
 
         <div class="max-w p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Top PP Plays des dernières 24 heures</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Top PP de la semaine en cours</h5>
             @if($ppCurrentWeek->isNotEmpty())
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-96">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-white text-gray-700 uppercase bg-gradient-to-br from-purple-600 to-blue-500">
                         <tr>
