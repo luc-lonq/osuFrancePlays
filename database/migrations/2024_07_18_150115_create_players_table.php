@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('osu_id');
             $table->string('username');
-            $table->integer('pp')->nullable();
+            $table->float('pp')->nullable();
+            $table->float('current_pp')->nullable();
             $table->integer('rank')->nullable();
             $table->integer('country_rank')->nullable();
             $table->integer('region_rank')->nullable();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\OsuApiController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SotwController;
@@ -8,9 +9,7 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\OsuUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/regions', [RegionController::class, 'index']);
 Route::get('/regions/{id}', [RegionController::class, 'show']);
@@ -37,3 +36,5 @@ Route::delete( '/admin/sotw/delete/{id}', [AdminController::class, 'sotwDelete']
 
 Route::get('/login', [OsuUserController::class, 'login']);
 Route::get('/logout', [OsuUserController::class, 'logout']);
+
+Route::get('/updatetopscores', [OsuApiController::class, 'updateTopScores']);

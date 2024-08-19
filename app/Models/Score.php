@@ -9,10 +9,5 @@ class Score extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'player_id',
-        'sotw',
-        'image_path',
-        'video_path',
-    ];
+    protected $guarded = [];
 }

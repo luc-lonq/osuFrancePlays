@@ -39,17 +39,17 @@
                                     </td>
                                     <td class="px-6 py-3">
                                         <div class="flex items-center">
-                                            {{ $player->pp }}pp
+                                            {{ round($player->pp) }}pp
                                             @if(array_key_exists($player->osu_id, json_decode($lastHistory->ranking, true)))
-                                                @if($player->pp - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] > 0)
+                                                @if(round($player->pp) - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] > 0)
                                                     <x-regions.arrow_svg direction="up"/>
                                                     <p class="text-green-500">
-                                                        {{ $player->pp - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] }}
+                                                        {{ round($player->pp) - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] }}
                                                     </p>
-                                                @elseif($player->pp - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] < 0)
+                                                @elseif(round($player->pp) - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] < 0)
                                                     <x-regions.arrow_svg direction="down"/>
                                                     <p class="text-red-500">
-                                                        {{ $player->pp - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] }}
+                                                        {{ round($player->pp) - json_decode($lastHistory->ranking, true)[$player->osu_id]['pp'] }}
                                                     </p>
                                                 @endif
                                             @endif

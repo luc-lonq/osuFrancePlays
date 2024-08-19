@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\History;
 use App\Models\Player;
 use App\Models\Region;
+use App\Models\Score;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
@@ -121,5 +122,54 @@ class OsuApiController extends Controller
                 'date' => $datetime->format('Y-m-d'),
                 'ranking' => json_encode($playersArr)]);
         }
+    }
+
+    public function updateTopScores() {
+        $now = Carbon::now();
+        for ($page = 1; $page <= env('OSU_RANKING_PP_PAGE'); $page++) {
+            foreach ($this->getFrenchRanking($page)['ranking'] as $key => $ranking) {
+                $player = Player::query()->where('osu_id', $ranking['user']['id'])->first();
+                if ($player->current_pp != $ranking['pp']) {
+                    $scores = $this->getUserTopScores($player->osu_id);
+                    foreach ($scores as $score) {
+                        $score_date = Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $score['created_at'], 'UTC');
+                        if ($score['pp'] >= 600 and
+                            $score_date->month == $now->month and
+                            $score_date->year == $now->year) {
+                            if (!Score::query()->where('score_id', $score['id'])->exists()) {
+                                Score::query()->create([
+                                    'player_id' => $player->id,
+                                    'score_id' => $score['id'],
+                                    'pp' => $score['pp'],
+                                    'date' => $score_date,
+                                    'map' => $score['beatmapset']['title'],
+                                    'diff' => $score['beatmap']['version'],
+                                ]);
+                            }
+                        }
+                    }
+                    $player->current_pp = $ranking['pp'];
+                    $player->save();
+                    sleep(2);
+                }
+            }
+            sleep(2);
+        }
+    }
+
+    public function getUserTopScores(int $osu_id) {
+        $response = $this->client->get('api/v2/users/'.$osu_id.'/scores/best', [
+            'query' => [
+                'legacy_only' => true,
+                'mode' => 'osu',
+                'limit' => 100,
+            ],
+            'headers' => [
+                'Authorization' => $this->getAccessToken()['token_type'] . ' ' . $this->getAccessToken()['access_token']
+            ],
+            'timeout' => 5,
+        ]);
+
+        return json_decode($response->getBody()->getContents(), true);
     }
 }

@@ -222,7 +222,6 @@ class AdminController extends Controller
         foreach ($newMhs as $mh) {
             $mhs[] = Score::query()->create([
                 'player_id' => $mh['player'],
-                'sotw' => false,
                 'image_path' => $mh['screen'],
             ])->id;
         }

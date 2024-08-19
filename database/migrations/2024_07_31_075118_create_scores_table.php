@@ -15,9 +15,14 @@ return new class extends Migration
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Player::class);
-            $table->boolean('sotw');
-            $table->string('image_path');
+            $table->boolean('sotw')->nullable();
+            $table->string('image_path')->nullable();
             $table->string('video_path')->nullable();
+            $table->float('pp')->nullable();
+            $table->datetime('date')->nullable();
+            $table->bigInteger('score_id')->nullable();
+            $table->string('map')->nullable();
+            $table->string('diff')->nullable();
             $table->timestamps();
         });
     }
