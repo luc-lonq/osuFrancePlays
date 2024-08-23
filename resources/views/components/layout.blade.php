@@ -11,7 +11,7 @@
             }
         </script>
     </head>
-    <body class="dark:!bg-gray-900">
+    <body class="dark:bg-gray-900">
         <div>
             <x-navbar/>
             <div class="flex justify-center mt-6">

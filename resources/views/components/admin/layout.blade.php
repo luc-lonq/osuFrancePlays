@@ -11,7 +11,7 @@
             }
         </script>
     </head>
-    <body class="dark:!bg-gray-900">
+    <body class="dark:bg-gray-900">
         <div class="flex justify-center mt-10">
             <x-admin.sidebar/>
             <div class="2xl:w-3/5 xl:w-4/5 md:w-4/5 sm:w-full sm:px-4 ml-64">

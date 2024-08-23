@@ -24,7 +24,7 @@
                         <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">{{ $sotw['player']->username}}</figcaption>
                     </figure>
                     <figure>
-                        <video class="w-full rounded-lg" controls>
+                        <video class="w-full rounded-lg" controls preload="metadata">
                             <source src="{{ Storage::url($sotw['score']->video_path) }}" type="video/mp4">
                         </video>
                         <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">Clip</figcaption>

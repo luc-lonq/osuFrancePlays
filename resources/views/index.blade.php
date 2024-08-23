@@ -2,7 +2,7 @@
     <div class="flex grid grid-cols-2 gap-4">
         <div class="max-w bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
             @if($sotw != null)
-                <video class="w-full rounded-t-lg" controls>
+                <video class="w-full rounded-t-lg" controls preload="metadata">
                     <source src="{{ Storage::url($sotw['score']->video_path) }}" type="video/mp4">
                 </video>
                 <div class="p-5">

@@ -24,7 +24,7 @@
             @endif
             <div class="grid grid-cols-2 gap-4 mb-6">
                 <img class="h-auto max-w-full rounded-lg" src="{{ Storage::url($sotws[0]->image_path) }}" alt="">
-                <video class="w-full rounded-lg" controls>
+                <video class="w-full rounded-lg" controls preload="metadata">
                     <source src="{{ Storage::url($sotws[0]->video_path) }}" type="video/mp4">
                 </video>
             </div>
@@ -45,7 +45,7 @@
                         <div class="grid grid-cols-2 gap-4 mb-6">
                             @for($i = 1; $i < count($sotws); $i++)
                                 <img class="h-auto max-w-full rounded-lg" src="{{ Storage::url($sotws[$i]->image_path) }}" alt="">
-                                <video class="w-full rounded-lg" controls>
+                                <video class="w-full rounded-lg" controls preload="metadata">
                                     <source src="{{ Storage::url($sotws[$i]->video_path) }}" type="video/mp4">
                                 </video>
                             @endfor
