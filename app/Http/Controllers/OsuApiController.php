@@ -114,7 +114,7 @@ class OsuApiController extends Controller
                     'rank' => $player['rank'],
                     'country_rank' => $player['country_rank'],
                     'region_rank' => $player['region_rank'],
-                    'pp' => $player['pp'],
+                    'pp' => round($player['pp']),
                 ];
             }
             $history = History::query()->create([
@@ -127,7 +127,7 @@ class OsuApiController extends Controller
     public function updateTopScores() {
         $now = Carbon::now();
         for ($page = 1; $page <= env('OSU_RANKING_PP_PAGE'); $page++) {
-            foreach ($this->getFrenchRanking($page)['ranking'] as $key => $ranking) {
+            foreach ($this->getFrenchRanking($page)['ranking'] as $ranking) {
                 $player = Player::query()->where('osu_id', $ranking['user']['id'])->first();
                 if ($player->current_pp != $ranking['pp']) {
                     $scores = $this->getUserTopScores($player->osu_id);

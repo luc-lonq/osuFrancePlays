@@ -2,7 +2,7 @@
     <h1 class="text-4xl font-semibold dark:text-white mb-4">Classements régionaux</h1>
     <div class="flex justify-center ">
         <x-regions.navbar :regions="$regions"/>
-        <div class="text-medium dark:text-gray-100 dark:bg-gray-800 rounded-lg w-full">
+        <div class="text-medium dark:text-gray-100 dark:bg-gray-900 rounded-lg w-full">
             @if(empty($players))
                 <x-regions.table_skeleton/>
             @else
@@ -10,12 +10,12 @@
                     <h1 class="text-3xl dark:text-white mb-3">{{ $region->name }} le {{ \Carbon\Carbon::create($date)->translatedFormat('d F Y') }}</h1>
                     <x-regions.date_dropdown :region="$region" :historyDates="$historyDates"/>
                 </div>
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-auto max-h-[42rem]">
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-auto max-h-[42rem] shadow-gray-200 dark:shadow-gray-700">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <x-regions.table_head/>
                         <tbody>
                             @foreach($players as $key=>$player)
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                     <th scope="row" class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                          <div class="flex items-center">
                                              {{ $player->region_rank }}

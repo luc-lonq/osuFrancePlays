@@ -27,7 +27,7 @@ class AdminController extends Controller
             abort(403);
         }
 
-        $sessions = SotwSession::all()->sortByDesc('date');
+        $sessions = SotwSession::query()->whereNotNull('sotw_id')->orderBy('date', 'desc')->paginate(10);
         $scores = Score::query()->whereDate('sotw', true)->get();
         $sotws = [];
         foreach ($sessions as $session) {
@@ -45,6 +45,7 @@ class AdminController extends Controller
 
         return view('admin.sotw', [
             'sotws' => $sotws,
+            'sessions' => $sessions,
         ]);
     }
 

@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="text-medium dark:text-gray-200 dark:bg-gray-800 rounded-lg mb-20">
+    <div class="text-medium dark:text-gray-200 dark:bg-gray-900 rounded-lg mb-20">
         <div class="flex justify-between">
             <h1 class="text-4xl font-semibold dark:text-white mb-4">Score of the week</h1>
             <a href="/sotw/stats">

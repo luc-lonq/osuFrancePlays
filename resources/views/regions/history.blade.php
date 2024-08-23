@@ -2,7 +2,7 @@
     <h1 class="text-4xl font-semibold dark:text-white mb-4">Classements régionaux</h1>
     <div class="flex justify-center ">
         <x-regions.navbar :regions="$regions"/>
-        <div class="text-medium dark:text-gray-100 dark:bg-gray-800 rounded-lg w-full">
+        <div class="text-medium dark:text-gray-100 dark:bg-gray-900 rounded-lg w-full">
             <div class="flex justify-between">
                 <h1 class="text-3xl dark:text-white mb-4">{{ $region->name }} le {{ \Carbon\Carbon::create($date)->translatedFormat('d F Y') }}</h1>
                 <x-regions.date_dropdown :region="$region" :historyDates="$historyDates"/>

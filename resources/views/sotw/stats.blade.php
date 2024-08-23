@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="text-medium dark:text-gray-200 dark:bg-gray-800 rounded-lg mb-20">
+    <div class="text-medium dark:text-gray-200 dark:bg-gray-900 rounded-lg mb-20">
         <div class="flex justify-between">
             <h1 class="text-4xl font-semibold dark:text-white mb-4">Score of the week</h1>
             <a href="/sotw">
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="flex justify-around mb-6">
-            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-4">
+            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-900 p-4 md:p-4">
                 <div class="flex justify-between items-start w-full">
                     <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white me-1">Scores of the week</h5>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="py-3" id="pie-chart-sotw"></div>
             </div>
 
-            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-4">
+            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-900 p-4 md:p-4">
                 <div class="flex justify-between items-start w-full">
                     <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white me-1">Mentions honorables</h5>
                 </div>
@@ -56,9 +56,9 @@
 
 
         <div class="flex justify-around space-x-4 items-start">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg shadow-gray-200 dark:shadow-gray-700">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead class="text-xs uppercase text-white bg-gradient-to-br from-purple-600 to-blue-500">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Pseudo
@@ -70,7 +70,7 @@
                     </thead>
                     <tbody>
                     @foreach($statsSotw as $username => $amount)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $username }}
                             </th>
@@ -82,9 +82,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg shadow-gray-200 dark:shadow-gray-700">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead class="text-xs uppercase text-white bg-gradient-to-br from-purple-600 to-blue-500">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Pseudo
@@ -96,7 +96,7 @@
                     </thead>
                     <tbody>
                     @foreach($statsMh as $username => $amount)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $username }}
                             </th>
@@ -163,6 +163,9 @@
             legend: {
                 position: "bottom",
                 fontFamily: "Inter, sans-serif",
+                labels: {
+                    colors: ["gray"]
+                }
             },
             yaxis: {
                 labels: {

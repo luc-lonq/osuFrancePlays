@@ -20,7 +20,7 @@ class PlayerController extends Controller
         $mhs_player = [];
         $sotws_player = [];
         foreach ($mhs as $mh) {
-            if ($mh->player_id == $player->id ) {
+            if ($mh->player_id == $player->id && $mh->pp == null) {
                 if ($mh->sotw) {
                     $sotws_player[] = $mh;
                 }
@@ -29,7 +29,6 @@ class PlayerController extends Controller
                 }
             }
         }
-
         return view('player.show', [
             'player' => $player,
             'region' => $region,

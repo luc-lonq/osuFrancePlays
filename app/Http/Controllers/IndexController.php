@@ -7,6 +7,7 @@ use App\Models\Score;
 use App\Models\SotwSession;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class IndexController extends Controller
@@ -22,17 +23,17 @@ class IndexController extends Controller
         }
 
         $startOfWeek = Carbon::now()->startOfWeek();
-        $pp_current_week = Score::query()->whereDate('date', '>=', $startOfWeek)->orderBy('pp', 'desc')->get();
+        $pp_current_week = Score::query()->whereDate('date', '>=', $startOfWeek)->orderBy('pp', 'desc')->paginate(5);
         foreach ($pp_current_week as $pp) {
             $pp->player_username = Player::query()->where('id', $pp->player_id)->first()->username;
         }
 
-
-
+        $players_pp = DB::table('players')->whereNotNull('pp')->whereNotNull('current_pp')->orderBy(DB::raw("ROUND(`current_pp`) - ROUND(`pp`) > 0"), "desc")->paginate(5);
         return view('index', [
             'sotwSession' => $sotw_session,
             'sotw' => $sotw,
             'ppCurrentWeek' => $pp_current_week,
+            'playersPp' => $players_pp,
         ]);
     }
 }
