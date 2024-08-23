@@ -29,9 +29,7 @@ class RegionController extends Controller
 
         if (!empty(json_decode($players))) {
             $players->sortByDesc('pp');
-            $date = ($players->first()->updated_at);
         }
-        else $date = null;
 
         $history_all = History::query()->where('region_id', $id)->orderBy('created_at', 'desc')->get();
         $history_dates = [];
@@ -45,7 +43,6 @@ class RegionController extends Controller
                 'lastHistory' => $last_history,
                 'historyDates' => $history_dates,
                 'region' => $region,
-                'date' => $date,
             ]);
     }
 

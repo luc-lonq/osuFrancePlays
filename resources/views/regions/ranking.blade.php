@@ -7,7 +7,7 @@
                 <x-regions.table_skeleton/>
             @else
                 <div class="flex justify-between">
-                    <h1 class="text-3xl dark:text-white mb-3">{{ $region->name }} le {{ \Carbon\Carbon::create($date)->translatedFormat('d F Y') }}</h1>
+                    <h1 class="text-3xl dark:text-white mb-3">{{ $region->name }} le {{ \Carbon\Carbon::now()->startOfWeek()->translatedFormat('d F Y') }}</h1>
                     <x-regions.date_dropdown :region="$region" :historyDates="$historyDates"/>
                 </div>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-auto max-h-[42rem] shadow-gray-200 dark:shadow-gray-700">
