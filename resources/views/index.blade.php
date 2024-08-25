@@ -33,7 +33,7 @@
 
                 <div data-popover id="popover-plays" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                     <div class="px-3 py-2">
-                        <p>Uniquement le top 100 français se fait traquer pour ces statistiques</p>
+                        <p>Uniquement les plays supérieur à 600pp issue des joueurs du top 100 français se fait traquer pour ces statistiques</p>
                     </div>
                     <div data-popper-arrow></div>
                 </div>
@@ -43,6 +43,9 @@
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-white text-gray-700 uppercase bg-gradient-to-br from-purple-600 to-blue-500">
                         <tr>
+                            <th scope="col" class="px-6 py-3">
+                                #
+                            </th>
                             <th scope="col" class="px-6 py-3">
                                 Joueur
                             </th>
@@ -55,15 +58,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($ppCurrentWeek as $pp)
+                        @foreach($ppCurrentWeek as $key=>$pp)
                             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <th scope="col" class="px-4 py-2">
+                                    {{ $key+1 }}
+                                </th>
+                                <th scope="row" class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $pp->player_username }}
                                 </th>
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-2">
                                     {{ round($pp->pp) }}
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-2">
                                     {{ $pp->map }} [{{ $pp->diff }}]
                                 </td>
                             </tr>
@@ -90,53 +96,57 @@
                     <div data-popper-arrow></div>
                 </div>
             </div>
-            @if(round($playersPp->first()->current_pp) > round($playersPp->first()->pp))
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-96 shadow-gray-200 dark:shadow-gray-700">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-white text-gray-700 uppercase bg-gradient-to-br from-purple-600 to-blue-500">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                #
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Joueur
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                PP
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Avant
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Après
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($playersPp as $key=>$player)
-                            @if(round($player->current_pp) > round($player->pp))
-                                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <td class="px-6 py-4">
-                                        {{ $key + 1 }}
-                                    </td>
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $player->username }}
-                                    </th>
-                                    <td class="px-6 py-4">
-                                            +{{ round($player->current_pp) - round($player->pp) }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ round($player->pp) }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ round($player->current_pp) }}
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
+            @if($playersPp->first() != null)
+                @if(round($playersPp->first()->current_pp) > round($playersPp->first()->pp))
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-96 shadow-gray-200 dark:shadow-gray-700">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <thead class="text-white text-gray-700 uppercase bg-gradient-to-br from-purple-600 to-blue-500">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    #
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Joueur
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    PP
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Avant
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Après
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($playersPp as $key=>$player)
+                                @if(round($player->current_pp) > round($player->pp))
+                                    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                        <td class="px-4 py-2">
+                                            {{ $key + 1 }}
+                                        </td>
+                                        <th scope="row" class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $player->username }}
+                                        </th>
+                                        <td class="px-4 py-2">
+                                            + {{ round($player->current_pp) - round($player->pp) }}
+                                        </td>
+                                        <td class="px-4 py-2">
+                                            {{ round($player->pp) }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ round($player->current_pp) }}
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Personne n'a gagné de pp pour le moment</p>
+                @endif
             @else
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Personne n'a gagné de pp pour le moment</p>
             @endif

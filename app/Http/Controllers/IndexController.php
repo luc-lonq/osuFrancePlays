@@ -23,12 +23,12 @@ class IndexController extends Controller
         }
 
         $startOfWeek = Carbon::now()->startOfWeek();
-        $pp_current_week = Score::query()->whereDate('date', '>=', $startOfWeek)->orderBy('pp', 'desc')->paginate(5);
+        $pp_current_week = Score::query()->whereDate('date', '>=', $startOfWeek)->orderBy('pp', 'desc')->get();
         foreach ($pp_current_week as $pp) {
             $pp->player_username = Player::query()->where('id', $pp->player_id)->first()->username;
         }
 
-        $players_pp = DB::table('players')->whereNotNull('pp')->whereNotNull('current_pp')->orderBy(DB::raw("ROUND(`current_pp`) - ROUND(`pp`) > 0"), "desc")->paginate(5);
+        $players_pp = DB::table('players')->whereNotNull('pp')->whereNotNull('current_pp')->orderBy(DB::raw("ROUND(`current_pp`) - ROUND(`pp`)"), "desc")->get();
         return view('index', [
             'sotwSession' => $sotw_session,
             'sotw' => $sotw,
