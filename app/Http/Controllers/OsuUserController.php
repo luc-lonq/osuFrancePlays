@@ -68,6 +68,11 @@ class OsuUserController extends Controller
             ]);
         }
         else {
+            $admin = 0;
+            if ($player->osu_id == env('SUPER_ADMIN')){
+                $admin = 1;
+            }
+
             $user = User::create([
                 'player_id' => $player->id,
                 'osu_id' => $player->osu_id,
@@ -75,7 +80,8 @@ class OsuUserController extends Controller
                 'token_type' => $tokenResponseJson['token_type'],
                 'access_token' => $tokenResponseJson['access_token'],
                 'refresh_token' => $tokenResponseJson['refresh_token'],
-                'expire' => $expire
+                'expire' => $expire,
+                'admin' => $admin,
             ]);
         }
 

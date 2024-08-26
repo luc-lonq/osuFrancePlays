@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Player;
 use App\Models\Score;
 use App\Models\SotwSession;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,22 +13,29 @@ use Illuminate\View\View;
 
 class AdminController extends Controller
 {
-    public function index()
+
+    public function isAdmin()
     {
         if(Auth::guest()) {
             abort(403);
         }
+
+        if(Auth::user()->admin == 0) {
+            abort(403);
+        }
+    }
+    public function index()
+    {
+        $this->isAdmin();
 
         return view('admin.index');
     }
 
     public function sotw(): View
     {
-        if(Auth::guest()) {
-            abort(403);
-        }
+        $this->isAdmin();
 
-        $sessions = SotwSession::query()->whereNotNull('sotw_id')->orderBy('date', 'desc')->paginate(10);
+        $sessions = SotwSession::query()->orderBy('date', 'desc')->paginate(10);
         $scores = Score::query()->whereDate('sotw', true)->get();
         $sotws = [];
         foreach ($sessions as $session) {
@@ -51,9 +59,7 @@ class AdminController extends Controller
 
     public function sotwCreate(): View
     {
-        if(Auth::guest()) {
-            abort(403);
-        }
+        $this->isAdmin();
 
         $players = Player::all()->sortBy('username');
 
@@ -64,9 +70,7 @@ class AdminController extends Controller
 
     public function sotwStore(Request $request)
     {
-        if(Auth::guest()) {
-            abort(403);
-        }
+        $this->isAdmin();
 
         $request->validate([
             'date' => 'required',
@@ -119,9 +123,7 @@ class AdminController extends Controller
 
     public function sotwEdit(int $id): View
     {
-        if(Auth::guest()) {
-            abort(403);
-        }
+        $this->isAdmin();
 
         $sotw_session = SotwSession::query()->find($id);
         $sotw = Score::query()->find($sotw_session->sotw_id);
@@ -141,9 +143,7 @@ class AdminController extends Controller
 
     public function sotwUpdate(int $id, Request $request)
     {
-        if(Auth::guest()) {
-            abort(403);
-        }
+        $this->isAdmin();
 
         $request->validate([
             'date' => 'required',
@@ -235,7 +235,10 @@ class AdminController extends Controller
         return redirect('admin/sotw/edit/' . $id);
     }
 
-    public function sotwDelete(int $id) {
+    public function sotwDelete(int $id)
+    {
+        $this->isAdmin();
+
         $sotw_session = SotwSession::query()->find($id);
         foreach (json_decode($sotw_session->mh) as $mh) {
             Score::query()->find($mh)->delete();
@@ -243,5 +246,59 @@ class AdminController extends Controller
         $sotw_session->delete();
 
         return redirect('/admin/sotw');
+    }
+
+    public function scores()
+    {
+        $this->isAdmin();
+
+        $scores_week = Score::query()->where('date', '>=', Carbon::now()->subWeek()->startOfWeek())
+            ->where('date', '<', Carbon::now()->startOfWeek())->orderByDesc('pp')->get();
+        foreach ($scores_week as $scores) {
+            $scores->player_username = Player::query()->where('id', $scores->player_id)->first()->username;
+        }
+
+        $scores_month = Score::query()->where('date', '>=', Carbon::now()->subMonth()->startOfMonth())
+            ->where('date', '<', Carbon::now()->startOfMonth())->orderByDesc('pp')->get();
+        foreach ($scores_month as $scores) {
+            $scores->player_username = Player::query()->where('id', $scores->player_id)->first()->username;
+        }
+
+        return view('admin.scores', [
+            'scoresWeek' => $scores_week,
+            'scoresMonth' => $scores_month,
+        ]);
+    }
+
+    public function users()
+    {
+        $this->isAdmin();
+
+        $users = User::query()->where('admin', '=', 0)->orderBy('username')->paginate(20);
+        $admins = User::query()->where('admin', '!=', 0)->orderBy('username')->paginate(20);
+        return view('admin.users', [
+            'users' => $users,
+            'admins' => $admins,
+        ]);
+    }
+
+    public function userUpdate(int $id)
+    {
+        $this->isAdmin();
+
+        $user = User::query()->find($id);
+        if ($user->admin == 0) {
+            $user->update([
+                'admin' => 1,
+            ]);
+        }
+        else {
+            $user->update([
+                'admin' => 0,
+            ]);
+        }
+        $user->save();
+
+        return redirect('/admin/users');
     }
 }

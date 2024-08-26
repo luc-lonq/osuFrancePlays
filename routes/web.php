@@ -32,9 +32,9 @@ Route::post('/admin/sotw/store', [AdminController::class, 'sotwStore']);
 Route::get( '/admin/sotw/edit/{id}', [AdminController::class, 'sotwEdit']);
 Route::post('/admin/sotw/update/{id}', [AdminController::class, 'sotwUpdate']);
 Route::delete( '/admin/sotw/delete/{id}', [AdminController::class, 'sotwDelete']);
+Route::get('/admin/scores', [AdminController::class, 'scores']);
+Route::get('/admin/users', [AdminController::class, 'users']);
+Route::post('/admin/users/update/{id}', [AdminController::class, 'userUpdate']);
 
 Route::get('/login', [OsuUserController::class, 'login']);
 Route::get('/logout', [OsuUserController::class, 'logout']);
-
-Route::get('/updatetopscores', [OsuApiController::class, 'updateTopScores']);
-Route::get('/players', [OsuApiController::class, 'updatePlayersData']);
