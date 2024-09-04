@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
+use App\Models\Region;
 use App\Models\Score;
 use App\Models\SotwSession;
 use App\Models\User;
@@ -24,6 +25,18 @@ class AdminController extends Controller
             abort(403);
         }
     }
+
+    public function isSuperAdmin()
+    {
+        if(Auth::guest()) {
+            abort(403);
+        }
+
+        if(Auth::user()->admin != 2) {
+            abort(403);
+        }
+    }
+
     public function index()
     {
         $this->isAdmin();
@@ -36,7 +49,7 @@ class AdminController extends Controller
         $this->isAdmin();
 
         $sessions = SotwSession::query()->orderBy('date', 'desc')->paginate(10);
-        $scores = Score::query()->whereDate('sotw', true)->get();
+        $scores = Score::query()->where('sotw', true)->get();
         $sotws = [];
         foreach ($sessions as $session) {
             foreach ($scores as $score) {
@@ -272,7 +285,7 @@ class AdminController extends Controller
 
     public function users()
     {
-        $this->isAdmin();
+        $this->isSuperAdmin();
 
         $users = User::query()->where('admin', '=', 0)->orderBy('username')->paginate(20);
         $admins = User::query()->where('admin', '!=', 0)->orderBy('username')->paginate(20);
@@ -284,7 +297,7 @@ class AdminController extends Controller
 
     public function userUpdate(int $id)
     {
-        $this->isAdmin();
+        $this->isSuperAdmin();
 
         $user = User::query()->find($id);
         if ($user->admin == 0) {
@@ -300,5 +313,44 @@ class AdminController extends Controller
         $user->save();
 
         return redirect('/admin/users');
+    }
+
+    public function players(): View
+    {
+        $this->isAdmin();
+
+        $players = Player::query()->orderByDesc('pp')->paginate(20);
+
+        $regions = Region::all();
+
+        return view('admin.players', [
+            'players' => $players,
+            'regions' => $regions,
+        ]);
+    }
+
+    public function playerShow(int $id): View
+    {
+        $this->isAdmin();
+
+        $player = Player::query()->find($id);
+
+        $regions = Region::all();
+
+        return view('admin.player-show', [
+            'player' => $player,
+            'regions' => $regions,
+        ]);
+    }
+
+    public function playerUpdate(int $id, Request $request)
+    {
+        $this->isAdmin();
+
+        $player = Player::query()->find($id);
+        $player->new_region = $request->region;
+        $player->save();
+
+        return redirect('/admin/players');
     }
 }

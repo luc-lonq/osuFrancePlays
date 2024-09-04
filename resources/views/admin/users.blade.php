@@ -22,14 +22,14 @@
                     <tbody>
                     @foreach($users as $key=>$user)
                         <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row" class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <th scope="row" class="px-4 py-2 font-medium text-gray-700 whitespace-nowrap dark:text-gray-200">
                                 {{ $user->username }}
                             </th>
-                            <th scope="row" class="px-4 py-2 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <th scope="row" class="px-4 py-2 text-right font-medium text-gray-500 whitespace-nowrap dark:text-gray-400">
                                 <form id="form" action="/admin/users/update/{{ $user->id }}" method="post">
                                     @csrf
-                                    <button submit class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                        Retirer des admins
+                                    <button submit>
+                                        Ajouter aux admins
                                     </button>
                                 </form>
                             </th>
@@ -59,14 +59,14 @@
                     <tbody>
                     @foreach($admins as $key=>$admin)
                         <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row" class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <th scope="row" class="px-4 py-2 font-medium text-gray-700 whitespace-nowrap dark:text-gray-200">
                                 {{ $admin->username }}
                             </th>
-                            <th scope="row" class="px-4 py-2 text-right font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <form id="form" action="/admin/users/update/{{ $admin->id }}" method="post">
+                            <th scope="row" class="px-4 py-2 text-right font-medium text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                <form id="form" action="/admin/user/update/{{ $admin->id }}" method="post">
                                     @csrf
-                                    <button submit class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                        Ajouter aux admins
+                                    <button submit>
+                                        Retirer des admins
                                     </button>
                                 </form>
                             </th>

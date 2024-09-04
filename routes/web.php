@@ -34,7 +34,10 @@ Route::post('/admin/sotw/update/{id}', [AdminController::class, 'sotwUpdate']);
 Route::delete( '/admin/sotw/delete/{id}', [AdminController::class, 'sotwDelete']);
 Route::get('/admin/scores', [AdminController::class, 'scores']);
 Route::get('/admin/users', [AdminController::class, 'users']);
-Route::post('/admin/users/update/{id}', [AdminController::class, 'userUpdate']);
+Route::post('/admin/user/update/{id}', [AdminController::class, 'userUpdate']);
+Route::get('/admin/players', [AdminController::class, 'players']);
+Route::get('/admin/player/{id}', [AdminController::class, 'playerShow']);
+Route::post('/admin/player/update/{id}', [AdminController::class, 'playerUpdate']);
 
 Route::get('/login', [OsuUserController::class, 'login']);
 Route::get('/logout', [OsuUserController::class, 'logout']);

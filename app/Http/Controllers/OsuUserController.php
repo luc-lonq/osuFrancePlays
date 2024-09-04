@@ -69,7 +69,7 @@ class OsuUserController extends Controller
         }
         else {
             $admin = 0;
-            if ($player->osu_id == env('SUPER_ADMIN')){
+            if ($player->osu_id == env('DEFAULT_ADMIN')){
                 $admin = 1;
             }
 
