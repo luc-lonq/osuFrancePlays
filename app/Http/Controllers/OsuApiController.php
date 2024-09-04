@@ -130,6 +130,8 @@ class OsuApiController extends Controller
         for ($page = 1; $page <= env('OSU_RANKING_PP_PAGE'); $page++) {
             foreach ($this->getFrenchRanking($page)['ranking'] as $ranking) {
                 $player = Player::query()->where('osu_id', $ranking['user']['id'])->first();
+                $player->username = $ranking['user']['username'];
+                $player->save();
                 if ($player->current_pp != $ranking['pp']) {
                     $scores = $this->getUserTopScores($player->osu_id);
                     foreach ($scores as $score) {

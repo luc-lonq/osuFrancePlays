@@ -319,7 +319,7 @@ class AdminController extends Controller
     {
         $this->isAdmin();
 
-        $players = Player::query()->orderByDesc('pp')->paginate(20);
+        $players = Player::query()->orderByDesc('current_pp')->paginate(20);
 
         $regions = Region::all();
 
