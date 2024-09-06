@@ -10,9 +10,6 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    #
-                </th>
-                <th scope="col" class="px-6 py-3">
                     Pseudo
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -26,9 +23,6 @@
             <tbody>
             @foreach($players as $player)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="px-6 py-4">
-                        {{ $player->country_rank }}
-                    </td>
                     <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                         {{ $player->username }}
                     </td>
