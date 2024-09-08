@@ -6,6 +6,7 @@ use App\Models\History;
 use App\Models\Player;
 use App\Models\Region;
 use App\Models\Score;
+use App\Models\User;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
@@ -130,8 +131,15 @@ class OsuApiController extends Controller
         for ($page = 1; $page <= env('OSU_RANKING_PP_PAGE'); $page++) {
             foreach ($this->getFrenchRanking($page)['ranking'] as $ranking) {
                 $player = Player::query()->where('osu_id', $ranking['user']['id'])->first();
-                $player->username = $ranking['user']['username'];
-                $player->save();
+                if($player->username != $ranking['user']['username']) {
+                    $player->username = $ranking['user']['username'];
+                    $user = User::query()->where('osu_id', $ranking['user']['id'])->first();
+                    if($user) {
+                        $user->username = $ranking['user']['username'];
+                        $user->save();
+                    }
+                    $player->save();
+                }
                 if ($player->current_pp != $ranking['pp']) {
                     $scores = $this->getUserTopScores($player->osu_id);
                     foreach ($scores as $score) {

@@ -24,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     {
         setlocale(LC_TIME, 'fr_FR.UTF-8');
         Carbon::setLocale('fr');
+        \Illuminate\Support\Facades\URL::forceScheme('https');
     }
 }

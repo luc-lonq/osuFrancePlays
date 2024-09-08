@@ -25,6 +25,8 @@ Route::get('/players/settings', [PlayerController::class, 'edit']);
 Route::post('/players/update/{id}', [PlayerController::class, 'update']);
 Route::get('/players/{id}', [PlayerController::class, 'show']);
 
+Route::get('/staff', [IndexController::class, 'staff']);
+
 Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/admin/sotw', [AdminController::class, 'sotw']);
 Route::get('/admin/sotw/create', [AdminController::class, 'sotwCreate']);

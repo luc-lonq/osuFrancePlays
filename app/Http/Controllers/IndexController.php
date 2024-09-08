@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Player;
 use App\Models\Score;
 use App\Models\SotwSession;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,6 +35,15 @@ class IndexController extends Controller
             'sotw' => $sotw,
             'ppCurrentWeek' => $pp_current_week,
             'playersPp' => $players_pp,
+        ]);
+    }
+
+    public function staff() : View
+    {
+        $staff = User::query()->where('admin', '!=', 0)->orderBy('username')->get();
+
+        return view('index.staff', [
+            'staff' => $staff,
         ]);
     }
 }

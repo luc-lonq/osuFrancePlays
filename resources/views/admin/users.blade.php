@@ -26,7 +26,7 @@
                                 {{ $user->username }}
                             </th>
                             <th scope="row" class="px-4 py-2 text-right font-medium text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                <form id="form" action="/admin/users/update/{{ $user->id }}" method="post">
+                                <form id="form" action="/admin/user/update/{{ $user->id }}" method="post">
                                     @csrf
                                     <button submit>
                                         Ajouter aux admins
