@@ -40,7 +40,7 @@ class IndexController extends Controller
 
     public function staff() : View
     {
-        $staff = User::query()->where('admin', '!=', 0)->orderBy('username')->get();
+        $staff = User::query()->where('admin', '!=', 0)->orderByRaw('UPPER(username) ASC)')->get();
 
         return view('index.staff', [
             'staff' => $staff,
