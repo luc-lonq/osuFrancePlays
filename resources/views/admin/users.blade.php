@@ -21,14 +21,14 @@
                     </thead>
                     <tbody>
                     @foreach($users as $key=>$user)
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row" class="px-4 py-2 font-medium text-gray-700 whitespace-nowrap dark:text-gray-200">
                                 {{ $user->username }}
                             </th>
                             <th scope="row" class="px-4 py-2 text-right font-medium text-gray-500 whitespace-nowrap dark:text-gray-400">
                                 <form id="form" action="/admin/user/update/{{ $user->id }}" method="post">
                                     @csrf
-                                    <button submit>
+                                    <button type="submit">
                                         Ajouter aux admins
                                     </button>
                                 </form>
@@ -58,14 +58,14 @@
                     </thead>
                     <tbody>
                     @foreach($admins as $key=>$admin)
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row" class="px-4 py-2 font-medium text-gray-700 whitespace-nowrap dark:text-gray-200">
                                 {{ $admin->username }}
                             </th>
                             <th scope="row" class="px-4 py-2 text-right font-medium text-gray-500 whitespace-nowrap dark:text-gray-400">
                                 <form id="form" action="/admin/user/update/{{ $admin->id }}" method="post">
                                     @csrf
-                                    <button submit>
+                                    <button type="submit">
                                         Retirer des admins
                                     </button>
                                 </form>

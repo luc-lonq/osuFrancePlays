@@ -8,7 +8,7 @@
                 <x-regions.date_dropdown :region="$region" :historyDates="$historyDates"/>
             </div>
 
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-auto max-h-[42rem]">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg overflow-y-auto max-h-[42rem] shadow-gray-200 dark:shadow-gray-700">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <x-regions.table_head/>
                     <tbody>

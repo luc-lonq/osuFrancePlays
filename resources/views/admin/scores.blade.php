@@ -10,7 +10,7 @@
             @if($scoresWeek->isNotEmpty())
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[42rem] shadow-gray-200 dark:shadow-gray-700">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-white text-gray-700 uppercase bg-gradient-to-br from-purple-600 to-blue-500">
+                        <thead class="text-white uppercase bg-gradient-to-br from-purple-600 to-blue-500">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 #
@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                         @foreach($scoresWeek as $key=>$pp)
-                            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="col" class="px-4 py-2">
                                     {{ $key+1 }}
                                 </th>
@@ -57,7 +57,7 @@
             @if($scoresMonth->isNotEmpty())
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[42rem] shadow-gray-200 dark:shadow-gray-700">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-white text-gray-700 uppercase bg-gradient-to-br from-purple-600 to-blue-500">
+                        <thead class="text-white uppercase bg-gradient-to-br from-purple-600 to-blue-500">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 #
@@ -75,7 +75,7 @@
                         </thead>
                         <tbody>
                         @foreach($scoresMonth as $key=>$pp)
-                            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="col" class="px-4 py-2">
                                     {{ $key+1 }}
                                 </th>

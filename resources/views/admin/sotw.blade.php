@@ -13,7 +13,7 @@
     <div>
         {{ $sessions->links() }}
     </div>
-    <div class="mt-4 relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="mt-4 relative overflow-x-auto shadow-md sm:rounded-lg shadow-gray-200 dark:shadow-gray-700">
         <table class="w-full text-base text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -38,7 +38,7 @@
                 @foreach($sotws as $sotw)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="p-4">
-                            <img src="{{ Storage::url($sotw['score']->image_path) }}" class="w-64 md:w-64 max-w-full max-h-full">
+                            <img src="{{ Storage::url($sotw['score']->image_path) }}" class="w-64 md:w-64 max-w-full max-h-full" alt="">
                         </td>
                         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                             {{ \Carbon\Carbon::create($sotw['session']->date)->translatedFormat('d F Y') }} au {{ \Carbon\Carbon::create($sotw['session']->date)->addDays(6)->translatedFormat('d F Y') }}

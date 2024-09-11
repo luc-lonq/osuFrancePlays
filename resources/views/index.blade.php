@@ -1,21 +1,16 @@
 <x-layout>
-    <div class="flex grid grid-cols-2 gap-4">
+    <div class="grid grid-cols-2 gap-4">
         <div class="max-w bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
             @if($sotw != null)
                 <video class="w-full rounded-t-lg" controls preload="metadata">
                     <source src="{{ Storage::url($sotw['score']->video_path) }}" type="video/mp4">
                 </video>
                 <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">SOTW de la semaine du {{ \Carbon\Carbon::create($sotwSession->date)->translatedFormat('d F Y') }} au {{ \Carbon\Carbon::create($sotwSession->date)->addDays(6)->translatedFormat('d F Y') }}</h5>
-                    </a>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">SOTW de la semaine du {{ \Carbon\Carbon::create($sotwSession->date)->translatedFormat('d F Y') }} au {{ \Carbon\Carbon::create($sotwSession->date)->addDays(6)->translatedFormat('d F Y') }}</h5>
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Réalisé par {{ $sotw['player']->username }}</p>
                     <a href="/sotw" class="inline-flex items-center text-sm font-medium text-center">
                         <x-button-primary>
                             Voir le score of the week
-                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                            </svg>
                         </x-button-primary>
                     </a>
                 </div>
@@ -26,7 +21,7 @@
 
         <div class="max-w p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
             <div class="flex justify-between">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Top PP de la semaine en cours</h5>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Top PP Plays de cette semaine</h5>
                 <svg data-popover-target="popover-plays" class="my-1 w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm9.408-5.5a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM10 10a1 1 0 1 0 0 2h1v3h-1a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-1v-4a1 1 0 0 0-1-1h-2Z" clip-rule="evenodd"/>
                 </svg>
@@ -41,7 +36,7 @@
             @if($ppCurrentWeek->isNotEmpty())
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-96 shadow-gray-200 dark:shadow-gray-700">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-white text-gray-700 uppercase bg-gradient-to-br from-purple-600 to-blue-500">
+                        <thead class="text-white uppercase bg-gradient-to-br from-purple-600 to-blue-500">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 #
@@ -59,7 +54,7 @@
                         </thead>
                         <tbody>
                         @foreach($ppCurrentWeek as $key=>$pp)
-                            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="col" class="px-4 py-2">
                                     {{ $key+1 }}
                                 </th>
@@ -100,7 +95,7 @@
                 @if(round($playersPp->first()->current_pp) > round($playersPp->first()->pp))
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-96 shadow-gray-200 dark:shadow-gray-700">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead class="text-white text-gray-700 uppercase bg-gradient-to-br from-purple-600 to-blue-500">
+                            <thead class="text-white uppercase bg-gradient-to-br from-purple-600 to-blue-500">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     #
@@ -122,7 +117,7 @@
                             <tbody>
                             @foreach($playersPp as $key=>$player)
                                 @if(round($player->current_pp) > round($player->pp))
-                                    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                         <td class="px-4 py-2">
                                             {{ $key + 1 }}
                                         </td>
@@ -150,6 +145,13 @@
             @else
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Personne n'a gagné de pp pour le moment</p>
             @endif
+        </div>
+
+        <div class="max-w bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
+            <div class="p-5">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Vote du Top 20 des joueurs osu! français de 2024</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Bientôt</p>
+            </div>
         </div>
     </div>
 </x-layout>

@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="flex justify-around mb-6">
-            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-900 p-4 md:p-4">
+            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-900 p-4 md:p-4 border border-gray-200 dark:border-gray-700">
                 <div class="flex justify-between items-start w-full">
                     <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white me-1">Scores of the week</h5>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="py-3" id="pie-chart-sotw"></div>
             </div>
 
-            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-900 p-4 md:p-4">
+            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-900 p-4 md:p-4 border border-gray-200 dark:border-gray-700">
                 <div class="flex justify-between items-start w-full">
                     <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white me-1">Mentions honorables</h5>
                 </div>
@@ -70,7 +70,7 @@
                     </thead>
                     <tbody>
                     @foreach($statsSotw as $username => $amount)
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $username }}
                             </th>
@@ -96,7 +96,7 @@
                     </thead>
                     <tbody>
                     @foreach($statsMh as $username => $amount)
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $username }}
                             </th>
