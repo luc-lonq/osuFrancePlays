@@ -37,7 +37,7 @@
                                          </div>
                                     </th>
                                     <td class="px-6 py-3">
-                                        <a href="/players/{{ $player->id }}">{{ $player->username }}</a>
+                                        <a href="/players/{{ $player->osu_id }}">{{ $player->username }}</a>
                                     </td>
                                     <td class="px-6 py-3">
                                         <div class="flex items-center">

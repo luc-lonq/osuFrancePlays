@@ -27,6 +27,7 @@ class IndexController extends Controller
         $pp_current_week = Score::query()->whereDate('date', '>=', $startOfWeek)->orderBy('pp', 'desc')->get();
         foreach ($pp_current_week as $pp) {
             $pp->player_username = Player::query()->where('id', $pp->player_id)->first()->username;
+            $pp->player_osu_id = Player::query()->where('id', $pp->player_id)->first()->osu_id;
         }
 
         $players_pp = DB::table('players')->whereNotNull('pp')->whereNotNull('current_pp')->orderBy(DB::raw("ROUND(`current_pp`) - ROUND(`pp`)"), "desc")->get();

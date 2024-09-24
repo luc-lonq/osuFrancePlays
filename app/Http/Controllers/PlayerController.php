@@ -12,9 +12,9 @@ use Illuminate\View\View;
 
 class PlayerController extends Controller
 {
-    public function show(int $id): View
+    public function show(int $osu_id): View
     {
-        $player = Player::find($id);
+        $player = Player::query()->where('osu_id', $osu_id)->first();
         $region = Region::find($player->region_id);
         $mhs = Score::all()->sortByDesc('created_at');
         $mhs_player = [];

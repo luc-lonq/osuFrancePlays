@@ -6,7 +6,9 @@
                     <div class="flex items-center justify-center my-auto w-full">
                         <img class="w-full my-auto rounded-lg" src="https://a.ppy.sh/{{ $user->osu_id }}" alt="">
                     </div>
-                    <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">{{ $user->username }}</figcaption>
+                    <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">
+                        <a href="/players/{{ $user->osu_id }}">{{ $user->username }}</a>
+                    </figcaption>
                 </figure>
             @endforeach
         </div>

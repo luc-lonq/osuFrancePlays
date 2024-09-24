@@ -59,7 +59,7 @@
                                     {{ $key+1 }}
                                 </th>
                                 <th scope="row" class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $pp->player_username }}
+                                    <a href="/players/{{ $pp->player_osu_id }}">{{ $pp->player_username }}</a>
                                 </th>
                                 <td class="px-4 py-2">
                                     {{ round($pp->pp) }}
@@ -122,7 +122,7 @@
                                             {{ $key + 1 }}
                                         </td>
                                         <th scope="row" class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $player->username }}
+                                            <a href="/players/{{ $player->osu_id }}">{{ $player->username }}</a>
                                         </th>
                                         <td class="px-4 py-2">
                                             + {{ round($player->current_pp) - round($player->pp) }}
