@@ -51,7 +51,7 @@
                     </button>
                 </h2>
                 <div id="accordion-flush-body-sotw" class="hidden" aria-labelledby="accordion-flush-heading-sotw">
-                    <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                    <div class="py-5">
                         <div class="grid grid-cols-2 gap-4 mb-6">
                             @for($i = 1; $i < count($sotws); $i++)
                                 <img class="h-auto max-w-full rounded-lg" src="{{ Storage::url($sotws[$i]->image_path) }}" alt="">
@@ -93,7 +93,7 @@
                             </button>
                         </h2>
                         <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
-                            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                            <div class="py-5">
                                 <div class="grid grid-cols-3 gap-4 mb-6">
                                     @for($i = 6; $i < count($mhs); $i++)
                                         <img class="h-auto max-w-full rounded-lg transform transition duration-300" src="{{ Storage::url($mhs[$i]->image_path) }}" alt="">
