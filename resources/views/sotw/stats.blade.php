@@ -164,7 +164,7 @@
                 position: "bottom",
                 fontFamily: "Inter, sans-serif",
                 labels: {
-                    colors: ["gray"]
+                    colors: "gray"
                 }
             },
             yaxis: {
