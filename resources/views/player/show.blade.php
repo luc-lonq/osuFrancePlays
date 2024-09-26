@@ -2,7 +2,7 @@
     <div class="text-medium dark:text-gray-200 dark:bg-gray-900 rounded-lg mb-20">
         <div class="flex mb-10">
             <img class="h-64 w-64 w-auto rounded-2xl" src="https://a.ppy.sh/{{ $player->osu_id }}" alt="image description">
-            <div class="ml-10">
+            <div class="ml-10 w-full">
                 <div class="flex justify-between">
                     <h1 class="text-4xl font-semibold dark:text-white mb-4">{{ $player->username }}</h1>
                     <a href="https://osu.ppy.sh/users/{{ $player->osu_id }}/osu" class="flex gap-1">
