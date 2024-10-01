@@ -2,9 +2,7 @@
     <div class="grid grid-cols-2 gap-4">
         <div class="max-w bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
             @if($sotw != null)
-                <video class="w-full rounded-t-lg" controls preload="metadata">
-                    <source src="{{ Storage::url($sotw['score']->video_path) }}" type="video/mp4">
-                </video>
+                <iframe class="w-full aspect-video rounded-t-lg" src="{{ $sotw['score']->video_path }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 <div class="p-5">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">SOTW de la semaine du {{ \Carbon\Carbon::create($sotwSession->date)->translatedFormat('d F Y') }} au {{ \Carbon\Carbon::create($sotwSession->date)->addDays(6)->translatedFormat('d F Y') }}</h5>
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Réalisé par {{ $sotw['player']->username }}</p>

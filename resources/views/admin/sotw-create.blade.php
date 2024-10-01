@@ -31,8 +31,8 @@
                         <input required id="screen_sotw" name="screen_sotw" class="pr-3 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" type="file">
                     </div>
                     <div class="w-full">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="screen_sotw">Clip</label>
-                        <input required id="clip_sotw" name="clip_sotw" class="pr-3 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" type="file">
+                        <label for="clip_sotw" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lien youtube clip</label>
+                        <input type="text" id="clip_sotw" name="clip_sotw" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                 </div>
             </div>

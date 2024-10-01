@@ -103,15 +103,13 @@ class AdminController extends Controller
         }
 
         $screen_sotw = $request->file('screen_sotw');
-        $clip_sotw = $request->file('clip_sotw');
         $screen_path = $screen_sotw->store('scores', 'public');
-        $clip_path = $clip_sotw->store('scores', 'public');
 
         $sotw = Score::query()->create([
             'player_id' => $request['player_id_sotw'],
             'sotw' => true,
             'image_path' => $screen_path,
-            'video_path' => $clip_path,
+            'video_path' => $request['clip_sotw'],
         ]);
 
         $mhs_ids = [];
@@ -175,18 +173,10 @@ class AdminController extends Controller
             $screen_path = $sotw->image_path;
         }
 
-        if ($request->hasFile('clip_sotw')) {
-            $clip_sotw = $request->file('clip_sotw');
-            $clip_path = $clip_sotw->store('scores', 'public');
-        }
-        else {
-            $clip_path = $sotw->video_path;
-        }
-
         Score::query()->find($sotw->id)->update([
             'player_id' => $request['player_id_sotw'],
             'image_path' => $screen_path,
-            'video_path' => $clip_path,
+            'video_path' => $request['clip_sotw'],
         ]);
 
         $mhs = [];
