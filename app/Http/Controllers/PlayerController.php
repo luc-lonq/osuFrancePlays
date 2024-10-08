@@ -44,9 +44,7 @@ class PlayerController extends Controller
 
     public function edit(): View {
         $user = Auth::user();
-
         $player = Player::query()->find($user->player_id);
-
         $regions = Region::all();
 
         return view('player.edit', [
