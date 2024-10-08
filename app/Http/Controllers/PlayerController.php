@@ -21,7 +21,7 @@ class PlayerController extends Controller
         $mhs_player = [];
         $sotws_player = [];
         foreach ($sotw_sessions as $sotw_session) {
-            $score = Score::query()->where('id', $sotw_session->id)->first();
+            $score = Score::query()->where('id', $sotw_session->sotw_id)->first();
             if ($score->player_id == $player->id) {
                 $sotws_player[] = $score;
             }
