@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\OsuApiController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SotwController;
 use App\Http\Controllers\PlayerController;
@@ -38,8 +37,13 @@ Route::get('/admin/scores', [AdminController::class, 'scores']);
 Route::get('/admin/users', [AdminController::class, 'users']);
 Route::post('/admin/user/update/{id}', [AdminController::class, 'userUpdate']);
 Route::get('/admin/players', [AdminController::class, 'players']);
+Route::get('/admin/players/create', [AdminController::class, 'playerCreate']);
+Route::post('/admin/players/store', [AdminController::class, 'playerStore']);
 Route::get('/admin/player/{id}', [AdminController::class, 'playerShow']);
 Route::post('/admin/player/update/{id}', [AdminController::class, 'playerUpdate']);
+Route::get('/admin/marbles', [AdminController::class, 'marbles']);
+Route::post('/admin/marbles/create', [AdminController::class, 'marblesCreate']);
+Route::delete('/admin/marbles/delete/{id}', [AdminController::class, 'marblesDelete']);
 
 Route::get('/login', [OsuUserController::class, 'login']);
 Route::get('/logout', [OsuUserController::class, 'logout']);

@@ -24,9 +24,7 @@
                         <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">{{ $sotw['player']->username}}</figcaption>
                     </figure>
                     <figure>
-                        <video class="w-full rounded-lg" controls preload="metadata">
-                            <source src="{{ Storage::url($sotw['score']->video_path) }}" type="video/mp4">
-                        </video>
+                        <iframe class="w-full aspect-video rounded-t-lg" src="{{ $sotw['score']->video_path }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         <figcaption class="mt-2 text-center text-gray-800 dark:text-gray-200">Clip</figcaption>
                     </figure>
                 </div>
