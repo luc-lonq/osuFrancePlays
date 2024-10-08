@@ -16,19 +16,24 @@ class PlayerController extends Controller
     {
         $player = Player::query()->where('osu_id', $osu_id)->first();
         $region = Region::find($player->region_id);
-        $mhs = Score::all()->sortByDesc('created_at');
+        $sotw_sessions = SotwSession::all()->sortByDesc('date');
+
         $mhs_player = [];
         $sotws_player = [];
-        foreach ($mhs as $mh) {
-            if ($mh->player_id == $player->id && $mh->pp == null) {
-                if ($mh->sotw) {
-                    $sotws_player[] = $mh;
-                }
-                else {
-                    $mhs_player[] = $mh;
+        foreach ($sotw_sessions as $sotw_session) {
+            $score = Score::query()->where('id', $sotw_session->id)->first();
+            if ($score->player_id == $player->id) {
+                $sotws_player[] = $score;
+            }
+
+            foreach (json_decode($sotw_session->mh) as $mh) {
+                $score = Score::query()->where('id', $mh)->first();
+                if ($score->player_id == $player->id) {
+                    $mhs_player[] = $score;
                 }
             }
         }
+
         return view('player.show', [
             'player' => $player,
             'region' => $region,

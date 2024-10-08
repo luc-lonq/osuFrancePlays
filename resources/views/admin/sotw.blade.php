@@ -13,7 +13,7 @@
     <div>
         {{ $sessions->links() }}
     </div>
-    <div class="mt-4 relative overflow-x-auto shadow-md sm:rounded-lg shadow-gray-200 dark:shadow-gray-700">
+    <div class="my-4 relative overflow-x-auto shadow-md sm:rounded-lg shadow-gray-200 dark:shadow-gray-700">
         <table class="w-full text-base text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-white uppercase bg-gradient-to-br from-purple-600 to-blue-500">
                 <tr>
