@@ -95,7 +95,7 @@ class AdminController extends Controller
         $date = Carbon::create($request['date'])->format('Y-m-d');
 
         $mhs = [];
-        for ($i = 1; $i <= count($request->allFiles()) - 2; $i++) {
+        for ($i = 1; $i <= count($request->allFiles()) - 1; $i++) {
             $mhs[] = [
                 'player' => $request['player_id_mh_' . $i],
                 'screen' => $request->allFiles()['screen_mh_' . $i]->store('scores', 'public'),
