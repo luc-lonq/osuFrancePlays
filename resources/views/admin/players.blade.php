@@ -1,6 +1,14 @@
 <x-admin.layout>
     <div class="flex justify-between">
         <h1 class="text-4xl font-semibold dark:text-white mb-4">Joueurs</h1>
+        <a href="/admin/players/create">
+            <x-button-primary>
+                Ajouter
+                <svg class="w-5 h-5 ms-2 text-gray-200 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
+                </svg>
+            </x-button-primary>
+        </a>
     </div>
     <div>
         {{ $players->links() }}

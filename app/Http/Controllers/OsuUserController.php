@@ -46,6 +46,10 @@ class OsuUserController extends Controller
 
         $meResponseJson = json_decode($meResponse->getBody()->getContents(), true);
 
+        if($meResponseJson['country']['code'] != 'FR') {
+            return redirect('/');
+        }
+
         $player = Player::query()->where('osu_id', $meResponseJson['id'])->first();
         if ($player) {
             $player->update([

@@ -343,4 +343,28 @@ class AdminController extends Controller
 
         return redirect('/admin/players');
     }
+
+    public function playerCreate(): View
+    {
+        $this->isAdmin();
+
+        $regions = Region::all();
+
+        return view('admin.player-create', [
+            'regions' => $regions,
+        ]);
+    }
+
+    public function playerStore(Request $request)
+    {
+        $this->isAdmin();
+        $response = (new OsuApiController)->getPlayer($request['id_player']);
+
+        Player::query()->create([
+            'username' => $response['username'],
+            'osu_id' => $response['id'],
+        ]);
+
+        return redirect('/admin/players');
+    }
 }

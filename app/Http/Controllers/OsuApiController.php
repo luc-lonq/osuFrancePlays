@@ -183,4 +183,15 @@ class OsuApiController extends Controller
 
         return json_decode($response->getBody()->getContents(), true);
     }
+
+    public function getPlayer(string $id) {
+        $response = $this->client->get('api/v2/users/'.$id, [
+            'headers' => [
+                'Authorization' => $this->getAccessToken()['token_type'] . ' ' . $this->getAccessToken()['access_token']
+            ],
+            'timeout' => 5,
+        ]);
+
+        return json_decode($response->getBody()->getContents(), true);
+    }
 }
