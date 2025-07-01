@@ -1,3 +1,5 @@
-Web app for french regional rankings and scores of the week. Should be updated in 2025 by something better with more stats and such.
+Web application built in Laravel for osu!'s french regional rankings and scores of the week.
+
+Not maintened anymore, currently redone with new functionalities https://github.com/pradevosu
 
 https://osufranceplays.fr
